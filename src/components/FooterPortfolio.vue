@@ -1,0 +1,209 @@
+<template>
+  <footer class="footer__portfolio">
+    <h4 class="contact">
+      <BoxIcon class="box" />
+      contact
+    </h4>
+    <p class="pharse">
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sint doloremque nostrum
+      atque dolorum aperiam sunt placeat modi dignissimos, repudiandae perferendis non
+      esse accusamus cum, ipsam nisi neque corporis voluptates. Unde.
+    </p>
+    <span class="network">
+      <span class="email">
+        <BrandGmailIcon size="30" class="icon__email" />
+        <p class="email__contact">marcodamascenodev@gmail.com</p>
+      </span>
+
+      <span class="github">
+        <a href="https://github.com/marcosDmc" target="_blank" class="github__url">
+          github.com/marcosDmc
+        </a>
+        <BrandGithubIcon size="30" class="icon__github" />
+      </span>
+      <span class="tel">
+        <PhoneCallIcon size="30" class="icon__tel" />
+        <p class="number__phone">(21)98140-8559</p>
+      </span>
+      <span class="linkedin">
+        <a
+          href="https://www.linkedin.com/in/marcodmc/"
+          class="linkedin__url"
+          target="_blank"
+          >linkedin/in/marcodmc</a
+        >
+        <BrandLinkedinIcon size="30" class="icon__linkedin" />
+      </span>
+    </span>
+    <div class="foot" v-show="year">&copy; {{ year }} marco damasceno</div>
+  </footer>
+</template>
+
+<script>
+import {
+  BrandLinkedinIcon,
+  BrandGithubIcon,
+  PhoneCallIcon,
+  BrandGmailIcon,
+  BoxIcon,
+} from "vue-tabler-icons";
+
+export default {
+  name: "Footer",
+  data: () => ({
+    year: "",
+  }),
+  methods: {
+    handleGetFullYear: function () {
+      return new Date().getFullYear();
+    },
+  },
+  mounted: function () {
+    this.year = this.handleGetFullYear();
+  },
+  components: {
+    BrandLinkedinIcon,
+    BrandGithubIcon,
+    PhoneCallIcon,
+    BrandGmailIcon,
+    BoxIcon,
+  },
+};
+</script>
+
+<style>
+:root {
+  --black: #000000;
+  --grafit: #141414;
+  --bluish-green: #2f6466;
+  --opaque-blue: hsl(196, 29%, 77%);
+  --dull-gray: #585d62;
+  --cyan: #5cc4c4;
+  --orange: #c36655;
+  --Moss-green: #6d8377;
+  --white: #dadcdf;
+  --blue-dark: #202733;
+  --blue-dark-light: #25303f;
+  --blue-light: #2a3443;
+  --white-text: #72777e;
+}
+
+.footer__portfolio {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  flex-direction: column;
+  background: linear-gradient(
+    to right,
+    var(--blue-dark),
+    var(--blue-dark-light),
+    var(--blue-dark)
+  );
+}
+
+.footer__portfolio .contact {
+  text-transform: capitalize;
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1rem;
+  gap: 5px;
+}
+
+.footer__portfolio .contact .box {
+  color: var(--cyan);
+}
+
+.footer__portfolio .pharse {
+  text-align: center;
+  word-wrap: break-word;
+  padding: 0 1rem;
+  color: var(--white-text);
+  width: 80%;
+}
+
+.footer__portfolio .pharse::first-letter {
+  text-transform: uppercase;
+}
+
+.footer__portfolio .network {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1rem;
+  padding: 2rem 0;
+  width: 100%;
+  place-items: center;
+}
+
+.footer__portfolio .network .tel,
+.email,
+.github,
+.linkedin {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 80%;
+  justify-content: start;
+}
+
+.footer__portfolio .network .github .github__url:hover,
+.linkedin .linkedin__url:hover {
+  transition: 0.4 ease;
+  color: var(--white);
+}
+
+.footer__portfolio .network .github,
+.linkedin {
+  justify-content: end;
+}
+
+.footer__portfolio .network .tel .icon__tel,
+.email .icon__email,
+.github .icon__github,
+.linkedin .icon__linkedin {
+  color: var(--cyan);
+}
+
+.footer__portfolio .network .tel,
+.email,
+.github,
+.linkedin p,
+a {
+  color: var(--white-text);
+  font-weight: 700;
+}
+
+.footer__portfolio .foot {
+  width: 100%;
+  background-color: var(--blue-dark);
+  padding: 2rem;
+  text-align: center;
+  color: var(--white-text);
+  border-bottom: 3px solid var(--cyan);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+}
+
+@media (max-width: 900px) {
+  .footer__portfolio .network {
+    grid-template-columns: 1fr;
+  }
+
+  .footer__portfolio .network .tel {
+    justify-content: center;
+  }
+
+  .footer__portfolio .network .github,
+  .linkedin,
+  .email,
+  .tel {
+    align-items: center;
+    justify-content: center;
+  }
+}
+</style>
