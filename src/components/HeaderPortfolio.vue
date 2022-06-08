@@ -12,7 +12,7 @@
       <ul class="header__navigation-wrapper-open">
         <li class="header__navigation-options">sobre</li>
         <li class="header__navigation-options">skills</li>
-        <li class="header__navigation-options">laboratorio</li>
+        <li class="header__navigation-options">laboratório</li>
         <li class="header__navigation-options">contato</li>
       </ul>
     </nav>
@@ -21,7 +21,7 @@
       <ul class="header__navigation-wrapper">
         <li class="header__navigation-options">sobre</li>
         <li class="header__navigation-options">skills</li>
-        <li class="header__navigation-options">laboratorio</li>
+        <li class="header__navigation-options">laboratório</li>
         <li class="header__navigation-options">contato</li>
       </ul>
     </nav>

@@ -5,9 +5,7 @@
       contact
     </h4>
     <p class="pharse">
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sint doloremque nostrum
-      atque dolorum aperiam sunt placeat modi dignissimos, repudiandae perferendis non
-      esse accusamus cum, ipsam nisi neque corporis voluptates. Unde.
+      fique a vontade para entrar em contato. será um prazer atende-lo (a).
     </p>
     <span class="network">
       <span class="email">

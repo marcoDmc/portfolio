@@ -1,17 +1,21 @@
 <template>
-  <div class="card">
-    <img src="../assets/luffy.svg" alt="photo project" class="photo__card" />
-    <strong class="title">avcfdfdffdff</strong>
-    <p class="description">
-      debitis odit dolorem alias quas repudiandae eveniet fugit hic illo! Omnis neque
-      atque culpa quam.
+  <a :href="url" class="card" target="_blank">
+    <img src="../assets/github.svg" alt="photo project" class="photo__card" />
+    <strong class="title">{{name}}</strong>
+    <p  class="description" >
+    {{description}}
     </p>
-  </div>
+  </a>
 </template>
 
 <script>
 export default {
   name: "Card",
+  props:{
+    name:String,
+    description:String,
+    url:String
+  }
 };
 </script>
 

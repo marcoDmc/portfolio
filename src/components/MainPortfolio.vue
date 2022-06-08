@@ -1,13 +1,11 @@
 <template>
-  <main class="main__portfolio">
+  <main class="main__portfolio" @click="handleGetProfileGithub">
     <section class="main__portfolio-specialty">
       <span class="wrapper">
         <strong class="stack">developer web</strong>
         <h1 class="name">marco damasceno</h1>
         <p class="description">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio, odit? Adipisci
-          voluptate nam laborum incidunt officia, amet consectetur dicta possimus ullam
-          illo, eos esse corporis asperiores laboriosam aliquam nemo magni?
+          Olá , prazer em conhecê-lo (a), veja alguns dos meus projetos logo abaixo.
         </p>
         <button class="document">baixar curriculo</button>
       </span>
@@ -16,14 +14,14 @@
     <section class="main__portfolio-about">
       <div class="social">
         <span class="profile">
-          <img src="../assets/luffy.svg" alt="profile" class="photo" />
+          <img v-bind:src="profile.avatar_url" alt="profile" class="photo" />
         </span>
         <strong class="name">marco damasceno</strong>
         <span class="logos">
           <a href="#" target="_blank" class="link__email">
             <BrandGmailIcon class="email" size="25" />
           </a>
-          <a href="https://github.com/marcosDmc" target="_blank" class="link__github">
+          <a v-bind:href="profile.html_url" target="_blank" class="link__github">
             <BrandGithubIcon class="github" size="25" />
           </a>
           <a href="https://www.linkedin.com/in/marcodmc/" target="_blank" class="link__linkedin">
@@ -38,9 +36,9 @@
         </h2>
         <strong class="about__my">conheça um pouco sobre mim</strong>
         <p class="description">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus, voluptatum
-          ducimus. At facere nihil harum numquam sequi! Temporibus facere nobis
-          perspiciatis repudiandae nulla, voluptatem iusto modi dolor nisi beatae odio.
+          26 anos , natural do rio de janeiro , experiência nas seguintes tecnologias sendo elas , HTML
+          , CSS, Javascript, React , Style Components e Git. Também possuo breve experiência em mongoDB , Express ,
+          Sass , MySQL, Webpack,Vue, Node
         </p>
       </div>
     </section>
@@ -77,15 +75,19 @@
       </span>
     </section>
     <section class="main__portfolio-laboratory">
-      <Card />
-      <Card />
-      <Card />
-      <Card />
+      <Card name="auth front-end"
+       description="repository created to practice user authentication"
+       url="https://github.com/marcoDmc/auth-frontend"
+       />
+      <Card name="sea-shopping-frontend" url="https://github.com/marcoDmc/sea-shopping-frontend"  description="application allows the user to select the desired items while the status bar informs if the list is healthy or not, varying according to the type of item selected"/>
+      <Card name="tourism website" url="https://github.com/marcoDmc/space-tourism" description="Frontend Mentor - space's multi-page tourism website solution"/>
+      <Card name="calc" url="https://github.com/marcoDmc/calculadora-de-gorjeta" description="This is a solution to the Profile card component challenge on Frontend Mentor"/>
     </section>
   </main>
 </template>
 
 <script>
+
 import {
   BrandGithubIcon,
   BrandLinkedinIcon,
@@ -94,8 +96,41 @@ import {
   BookIcon,
 } from "vue-tabler-icons";
 import Card from "./Card.vue";
+ let xml = new XMLHttpRequest();
+
 export default {
   name: "Main",
+  props:{
+    name:String,
+    description:String,
+    url:String
+  },
+  data: () => {
+    return{
+      profile:{},
+      description:"",
+      url:"",
+      name:"",
+    }
+  },
+  methods:{
+    handleSetResponseFormatJson:function(){
+       this.profile = JSON.parse(xml.responseText);
+    },
+    handleGetProfileGithub: async function(){
+     
+      xml.addEventListener("load", this.handleSetResponseFormatJson);
+      await xml.open("GET", "https://api.github.com/users/marcoDmc");
+      xml.send();
+
+    }
+
+  },
+  mounted:function() {
+     this.profile = this.handleGetProfileGithub()
+    
+  
+  },
   components: {
     BrandGithubIcon,
     BrandLinkedinIcon,
@@ -103,6 +138,7 @@ export default {
     BoxIcon,
     Card,
     BookIcon,
+ 
   },
 };
 </script>
@@ -196,7 +232,7 @@ export default {
 .main__portfolio .main__portfolio-specialty .wrapper .description::first-letter {
   text-transform: uppercase;
   color: var(--cyan);
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   font-weight: 700;
 }
 
@@ -332,7 +368,7 @@ export default {
   color: var(--white-text);
   word-wrap: break-word;
   font-size: 1rem;
-  padding: 1rem 2rem 1rem 0;
+  padding:0  1rem 0 0;
 }
 
 .main__portfolio .main__portfolio-skills {
@@ -472,6 +508,10 @@ export default {
   .about__my {
     text-align: center;
     width: 100%;
+  }
+    .main__portfolio .main__portfolio-about .about,
+  .description{
+    padding: 1rem 1rem 1rem 1rem;
   }
 
   .main__portfolio .main__portfolio-about .about .title {
