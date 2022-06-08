@@ -1,35 +1,34 @@
-# teste
+# Title / Portfolio
 
-This template should help get you started developing with Vue 3 in Vite.
+## About / Synopsis
 
-## Recommended IDE Setup
+* land page to present some of my projects, share my experiences in certain technologies, and talk a little more about myself
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+* Project status: working
 
-## Customize configuration
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
 
-## Project Setup
 
-```sh
-npm install
-```
 
-### Compile and Hot-Reload for Development
+See below for some sample images of the:
 
-```sh
-npm run dev
-```
+### Screenshots
+![](./src/assets/desktop-top.png)
 
-### Compile and Minify for Production
+![](./src/assets/desktop-main.png)
 
-```sh
-npm run build
-```
+![](./src/assets/desktop-footer.png)
+#
 
-### Lint with [ESLint](https://eslint.org/)
+mobile version:
 
-```sh
-npm run lint
-```
+![](./src/assets/mobile-top.png)
+![](./src/assets/mobile-main.png)
+![](./src/assets/mobile-footer.png)
+![](./src/assets/mobile-menu-open.png)
+![](./src/assets/mobile-skills.png)
+![](./src/assets/mobile-repos.png)
+
+
+
+<!-- [portuguese readme](./README-PT.md) -->
