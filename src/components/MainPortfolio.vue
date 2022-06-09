@@ -75,13 +75,14 @@
       </span>
     </section>
     <section class="main__portfolio-laboratory">
-      <Card name="auth front-end"
-       description="repository created to practice user authentication"
-       url="https://github.com/marcoDmc/auth-frontend"
-       />
-      <Card name="sea-shopping-frontend" url="https://github.com/marcoDmc/sea-shopping-frontend"  description="application allows the user to select the desired items while the status bar informs if the list is healthy or not, varying according to the type of item selected"/>
-      <Card name="tourism website" url="https://github.com/marcoDmc/space-tourism" description="Frontend Mentor - space's multi-page tourism website solution"/>
-      <Card name="calc" url="https://github.com/marcoDmc/calculadora-de-gorjeta" description="This is a solution to the Profile card component challenge on Frontend Mentor"/>
+      <Card name="auth front-end" description="repository created to practice user authentication"
+        url="https://github.com/marcoDmc/auth-frontend" />
+      <Card name="sea-shopping-frontend" url="https://github.com/marcoDmc/sea-shopping-frontend"
+        description="application allows the user to select the desired items while the status bar informs if the list is healthy or not, varying according to the type of item selected" />
+      <Card name="tourism website" url="https://github.com/marcoDmc/space-tourism"
+        description="Frontend Mentor - space's multi-page tourism website solution" />
+      <Card name="calc" url="https://github.com/marcoDmc/calculadora-de-gorjeta"
+        description="This is a solution to the Profile card component challenge on Frontend Mentor" />
     </section>
   </main>
 </template>
@@ -96,29 +97,29 @@ import {
   BookIcon,
 } from "vue-tabler-icons";
 import Card from "./Card.vue";
- let xml = new XMLHttpRequest();
+let xml = new XMLHttpRequest();
 
 export default {
   name: "Main",
-  props:{
-    name:String,
-    description:String,
-    url:String
+  props: {
+    name: String,
+    description: String,
+    url: String
   },
   data: () => {
-    return{
-      profile:{},
-      description:"",
-      url:"",
-      name:"",
+    return {
+      profile: {},
+      description: "",
+      url: "",
+      name: "",
     }
   },
-  methods:{
-    handleSetResponseFormatJson:function(){
-       this.profile = JSON.parse(xml.responseText);
+  methods: {
+    handleSetResponseFormatJson: function () {
+      this.profile = JSON.parse(xml.responseText);
     },
-    handleGetProfileGithub: async function(){
-     
+    handleGetProfileGithub: async function () {
+
       xml.addEventListener("load", this.handleSetResponseFormatJson);
       await xml.open("GET", "https://api.github.com/users/marcoDmc");
       xml.send();
@@ -126,10 +127,10 @@ export default {
     }
 
   },
-  mounted:function() {
-     this.profile = this.handleGetProfileGithub()
-    
-  
+  mounted: function () {
+    this.profile = this.handleGetProfileGithub()
+
+
   },
   components: {
     BrandGithubIcon,
@@ -138,7 +139,7 @@ export default {
     BoxIcon,
     Card,
     BookIcon,
- 
+
   },
 };
 </script>
@@ -368,7 +369,7 @@ export default {
   color: var(--white-text);
   word-wrap: break-word;
   font-size: 1rem;
-  padding:0  1rem 0 0;
+  padding: 0;
 }
 
 .main__portfolio .main__portfolio-skills {
@@ -500,7 +501,7 @@ export default {
   .main__portfolio .main__portfolio-about .about {
     place-items: center;
     width: 100%;
-    padding: 1rem 2rem;
+    padding: 1rem;
   }
 
   .main__portfolio .main__portfolio-about .about,
@@ -508,11 +509,15 @@ export default {
   .about__my {
     text-align: center;
     width: 100%;
+
+    text-align: center;
   }
-    .main__portfolio .main__portfolio-about .about,
-  .description{
-    padding: 1rem 1rem 1rem 1rem;
+
+  .main__portfolio .main__portfolio-about .about,
+  .description {
+    padding:10px;
   }
+
 
   .main__portfolio .main__portfolio-about .about .title {
     justify-content: center;
