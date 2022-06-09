@@ -36,4 +36,4 @@ mobile version:
 
 
 
-[English README](./README-PT.md)
+[Portuguese README](./README-PT.md)
