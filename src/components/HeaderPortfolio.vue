@@ -31,7 +31,7 @@
 <script>
 import { ChevronLeftIcon, ChevronRightIcon } from "vue-tabler-icons";
 export default {
-  name: "Header",
+  name: "HEADER",
   el: ".header__navigation-topics",
   data: () => ({
     menuOpen: false,
@@ -50,21 +50,6 @@ export default {
 </script>
 
 <style>
-:root {
-  --black: #000000;
-  --grafit: #141414;
-  --bluish-green: #2f6466;
-  --opaque-blue: #b4cdd6;
-  --dull-gray: #585d62;
-  --cyan: #5cc4c4;
-  --orange: #c36655;
-  --Moss-green: #6d8377;
-  --white: #dadcdf;
-  --blue-dark: #202733;
-  --blue-dark-light: #25303f;
-  --white-text: #72777e;
-}
-
 ul li {
   list-style: none;
 }
@@ -100,11 +85,11 @@ ul li {
 .header__portfolio .wrapper {
   display: flex;
   align-items: center;
-  color: var(--cyan);
+  color: var(--purple);
 }
 
 .header__portfolio .wrapper .ChevronLeftIcon {
-  color: var(--cyan);
+  color: var(--pink);
 }
 
 .header__portfolio .wrapper .logo {
@@ -115,7 +100,7 @@ ul li {
 }
 
 .header__portfolio .wrapper .ChevronRightIcon {
-  color: var(--cyan);
+  color: var(--pink);
 }
 
 .header__portfolio .header__logo-portfolio {
@@ -140,7 +125,7 @@ ul li {
 .header__portfolio .header__navigation-topics .header__navigation-wrapper .header__navigation-options {
   text-transform: capitalize;
   color: var(--white-text);
-  border-bottom: 2px solid var(--cyan);
+  border-bottom: 2px solid var(--pink);
   cursor: pointer;
   text-align: center;
   height: auto;
@@ -174,7 +159,7 @@ ul li {
   .header__portfolio .header__navigation-topics {
     width: 20px;
     height: 3px;
-    background-color: var(--cyan);
+    background-color: var(--purple);
     position: relative;
     z-index: 1;
     cursor: pointer;
@@ -183,7 +168,7 @@ ul li {
   .header__portfolio .header__navigation-topics::after {
     width: 25px;
     height: 3px;
-    background-color: var(--cyan);
+    background-color: var(--pink);
     position: absolute;
     top: -6px;
     content: "";
@@ -192,7 +177,7 @@ ul li {
   .header__portfolio .header__navigation-topics::before {
     width: 25px;
     height: 3px;
-    background-color: var(--cyan);
+    background-color: var(--pink);
     position: absolute;
     bottom: -6px;
     content: "";
@@ -209,6 +194,7 @@ ul li {
     position: relative;
     z-index: 1;
     animation: 0.8s linear 0.8s normal hidePartMenu;
+    transition: all .4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   }
 
   .header__portfolio .header__navigation-topics-open .header__navigation-options {
@@ -223,7 +209,7 @@ ul li {
   .header__portfolio .header__navigation-topics-open::after {
     width: 25px;
     height: 3px;
-    background-color: var(--cyan);
+    background-color: var(--pink);
     position: absolute;
     top: -5px;
     content: "";
@@ -233,7 +219,7 @@ ul li {
   .header__portfolio .header__navigation-topics-open::before {
     width: 25px;
     height: 3px;
-    background-color: var(--cyan);
+    background-color: var(--pink);
     position: absolute;
     bottom: -5px;
     content: "";
@@ -241,7 +227,7 @@ ul li {
   }
 
   .header__portfolio .header__navigation-topics-open .header__navigation-wrapper-open {
-    background-color: var(--blue-dark);
+    background-color: var(--pink);
     display: flex;
     flex-direction: column;
     align-items: start;
@@ -266,12 +252,12 @@ ul li {
     align-items: start;
     justify-content: start;
     gap: 10px;
-    color: var(--cyan);
+    color: var(--grafit);
     border-radius: 8px;
   }
 
   .header__portfolio .header__navigation-topics-open .header__navigation-wrapper-open .header__navigation-options:hover {
-    background-color: var(--white);
+    background-color: var(--purple);
     transition: .4s;
     color: var(--black);
   }
@@ -279,10 +265,10 @@ ul li {
   .header__portfolio .header__navigation-topics-open .header__navigation-wrapper-open .header__navigation-options::before {
     content: "";
     width: 250px;
-    height: 1px;
+    height: 2px;
     bottom: -10px;
     left: 0;
-    background: var(--cyan);
+    background: linear-gradient(315deg, var(--pink), var(--purple), var(--pink));
     position: absolute;
 
   }
@@ -333,8 +319,20 @@ ul li {
   }
 
   @keyframes HidePartMenu {
+    50% {
+      opacity: .7;
+    }
+
+    75% {
+      opacity: .5;
+    }
+
+    85% {
+      opacity: .3;
+    }
+
     100% {
-      background-color: transparent;
+     opacity:0;
     }
   }
 }

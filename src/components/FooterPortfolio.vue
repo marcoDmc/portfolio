@@ -2,7 +2,7 @@
   <footer class="footer__portfolio">
     <h4 class="contact">
       <BoxIcon class="box" />
-      contact
+      contato
     </h4>
     <p class="pharse">
       fique a vontade para entrar em contato. será um prazer atende-lo (a).
@@ -47,7 +47,7 @@ import {
 } from "vue-tabler-icons";
 
 export default {
-  name: "Footer",
+  name: "FOOTER",
   data: () => ({
     year: "",
   }),
@@ -70,21 +70,6 @@ export default {
 </script>
 
 <style>
-:root {
-  --black: #000000;
-  --grafit: #141414;
-  --bluish-green: #2f6466;
-  --opaque-blue: hsl(196, 29%, 77%);
-  --dull-gray: #585d62;
-  --cyan: #5cc4c4;
-  --orange: #c36655;
-  --Moss-green: #6d8377;
-  --white: #dadcdf;
-  --blue-dark: #202733;
-  --blue-dark-light: #25303f;
-  --blue-light: #2a3443;
-  --white-text: #72777e;
-}
 
 .footer__portfolio {
   width: 100%;
@@ -112,7 +97,7 @@ export default {
 }
 
 .footer__portfolio .contact .box {
-  color: var(--cyan);
+  color: var(--pink);
 }
 
 .footer__portfolio .pharse {
@@ -162,7 +147,7 @@ export default {
 .email .icon__email,
 .github .icon__github,
 .linkedin .icon__linkedin {
-  color: var(--cyan);
+  color: var(--pink);
 }
 
 .footer__portfolio .network .tel,
@@ -180,7 +165,7 @@ a {
   padding: 2rem;
   text-align: center;
   color: var(--white-text);
-  border-bottom: 3px solid var(--cyan);
+  border-bottom: 3px solid var(--purple);
   display: flex;
   justify-content: center;
   align-items: center;
