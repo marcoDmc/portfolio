@@ -1,21 +1,33 @@
 <template>
-  <main class="main__portfolio" @click="handleGetProfileGithub">
+  <main class="main__portfolio">
     <section class="main__portfolio-specialty">
       <span class="wrapper">
-        <strong class="stack">developer web</strong>
+        <strong class="stack">front-end developer</strong>
         <h1 class="name">marco damasceno</h1>
         <p class="description">
-          Olá , prazer em conhecê-lo (a), veja alguns dos meus projetos logo abaixo.
+          Olá , prazer em conhecê-lo (a), veja alguns dos meus projetos logo
+          abaixo.
         </p>
-        <button class="document">baixar curriculo</button>
+
+        <a v-bind:href="ancor" download="curriculo" v-bind:class="active"
+          v-on:click="handleAnimationButtonDownload($event)">
+          <span class="text">{{ completed }}</span>
+        </a>
+
       </span>
-      <img src="../assets/programming.svg" alt="person in front of a monitor" class="background__image" />
+      <img
+        src="https://raw.githubusercontent.com/MicaelliMedeiros/micaellimedeiros/master/image/computer-illustration.png"
+        alt="Computador imagem" class="background__image" />
     </section>
     <section class="main__portfolio-about">
       <div class="social">
-        <span class="profile">
-          <img v-bind:src="profile.avatar_url" alt="profile" class="photo" />
-        </span>
+        <div class="box">
+          <div class="content">
+            <img v-bind:src="profile.avatar_url" alt="profile" class="photo" />
+            <h2>@marcoDmc <br><span>front-end developer</span></h2>
+            <a href="https://github.com/marcoDmc" target="_blank">hire me</a>
+          </div>
+        </div>
         <strong class="name">marco damasceno</strong>
         <span class="logos">
           <a href="#" target="_blank" class="link__email">
@@ -36,9 +48,12 @@
         </h2>
         <strong class="about__my">conheça um pouco sobre mim</strong>
         <p class="description">
-          26 anos , natural do rio de janeiro , experiência nas seguintes tecnologias sendo elas , HTML
-          , CSS, Javascript, React , Style Components e Git. Também possuo breve experiência em mongoDB , Express ,
-          Sass , MySQL, Webpack,Vue, Node
+          Desenvolvedor front-end natural do no rio de janeiro. Tenho 1 ano e meio de experiência nas seguintes
+          tecnologias , Javascript , HTML , CSS, React , Styled-Components e GIT. Também possuo breve experiência em
+          mongoDB , Express
+          , Sass , MySQL, Webpack,Vue e Node .
+          Estou aberto a oportunidades e projetos interessantes.
+
         </p>
       </div>
     </section>
@@ -77,18 +92,17 @@
     <section class="main__portfolio-laboratory">
       <Card name="auth front-end" description="repository created to practice user authentication"
         url="https://github.com/marcoDmc/auth-frontend" />
-      <Card name="sea-shopping-frontend" url="https://github.com/marcoDmc/sea-shopping-frontend"
-        description="application allows the user to select the desired items while the status bar informs if the list is healthy or not, varying according to the type of item selected" />
+      <Card name="sea-shopping" url="https://github.com/marcoDmc/sea-shopping-frontend"
+        description="application allows the user to select the desired items while the status bar" />
       <Card name="tourism website" url="https://github.com/marcoDmc/space-tourism"
         description="Frontend Mentor - space's multi-page tourism website solution" />
       <Card name="calc" url="https://github.com/marcoDmc/calculadora-de-gorjeta"
-        description="This is a solution to the Profile card component challenge on Frontend Mentor" />
+        description="solution to the Profile card component challenge Frontend Mentor" />
     </section>
   </main>
 </template>
 
 <script>
-
 import {
   BrandGithubIcon,
   BrandLinkedinIcon,
@@ -100,37 +114,56 @@ import Card from "./Card.vue";
 let xml = new XMLHttpRequest();
 
 export default {
-  name: "Main",
+  name: "MAIN",
+  el: "document",
   props: {
     name: String,
     description: String,
-    url: String
+    url: String,
   },
   data: () => {
     return {
       profile: {},
-      description: "",
-      url: "",
-      name: "",
-    }
+      active: "document",
+      completed: "baixar curriculo",
+      ancor: ""
+    };
   },
   methods: {
     handleSetResponseFormatJson: function () {
       this.profile = JSON.parse(xml.responseText);
     },
     handleGetProfileGithub: async function () {
-
       xml.addEventListener("load", this.handleSetResponseFormatJson);
       await xml.open("GET", "https://api.github.com/users/marcoDmc");
       xml.send();
+    },
+    handleDownload: function (event) {
+      event.preventDefault();
+      setTimeout(() => {
+        this.ancor = "../assets/Profile.pdf"
+      }, 10000)
 
-    }
+    },
+    handleAnimationButtonDownload: function (event) {
+      this.active = "document-active";
 
+      this.handleDownload(event)
+
+      setTimeout(() => {
+        this.active = "document";
+        this.completed = "completo";
+      }, 6000);
+
+      setTimeout(() => {
+        this.completed = "baixar curriculo";
+      }, 8000);
+
+
+    },
   },
   mounted: function () {
-    this.profile = this.handleGetProfileGithub()
-
-
+    this.profile = this.handleGetProfileGithub();
   },
   components: {
     BrandGithubIcon,
@@ -139,7 +172,6 @@ export default {
     BoxIcon,
     Card,
     BookIcon,
-
   },
 };
 </script>
@@ -159,6 +191,9 @@ export default {
   --blue-dark-light: #25303f;
   --blue-light: #2a3443;
   --white-text: #72777e;
+  --purple: #879FFA;
+  --pink: #CCCCF5;
+  --greenblue: #2BE3F2;
 }
 
 .main__portfolio {
@@ -185,6 +220,8 @@ export default {
   display: grid;
   place-items: left;
   grid-gap: 0.8rem;
+  width: 100%;
+  max-width: 680px;
 }
 
 .main__portfolio .main__portfolio-specialty .wrapper .stack {
@@ -197,8 +234,9 @@ export default {
   overflow: hidden;
   border-right: 1px solid var(--white);
   white-space: nowrap;
-  color: var(--cyan);
-  animation: borderHider normal infinite 0.8s, typeWriter normal 5s steps(55) both;
+  color: var(--purple);
+  animation: borderHider normal infinite 0.8s,
+    typeWriter normal 5s steps(55) both;
 }
 
 @keyframes borderHider {
@@ -210,7 +248,7 @@ export default {
 @keyframes typeWriter {
   100% {
     width: 100%;
-    max-width: 134px;
+    max-width: 200px;
   }
 }
 
@@ -232,30 +270,108 @@ export default {
 
 .main__portfolio .main__portfolio-specialty .wrapper .description::first-letter {
   text-transform: uppercase;
-  color: var(--cyan);
+  color: var(--purple);
   font-size: 1.1rem;
   font-weight: 700;
 }
 
-.main__portfolio .main__portfolio-specialty .wrapper .document {
-  border: 1px solid var(--cyan);
+.document {
+  border: 1px solid var(--pink);
   padding: 10px;
-  border-radius: 2px;
+  border-radius: 5px;
   background: transparent;
-  color: var(--cyan);
+  color: var(--purple);
   font-size: 0.8rem;
   text-transform: uppercase;
   text-align: center;
-  outline: none;
   cursor: pointer;
   width: 100%;
   max-width: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  overflow: hidden;
 }
 
-.main__portfolio .main__portfolio-specialty .wrapper .document:hover {
-  transition: 0.4s ease;
-  opacity: 0.6;
+.document:hover {
+  opacity: .7;
+  transition: .4s;
 }
+
+.document::before {
+  content: "";
+  position: absolute;
+  background: linear-gradient(315deg, var(--pink), var(--purple), var(--pink));
+  width: 100%;
+  height: 100%;
+  left: -100%;
+  border-radius: 55px;
+}
+
+.document-active {
+  border: 1px solid var(--pink);
+  padding: 10px;
+  border-radius: 5px;
+  background: transparent;
+  color: var(--purple);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  max-width: 150px;
+  position: relative;
+  height: 10px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: all .4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.document .text {
+  font-weight: 400;
+}
+
+.document-active::before {
+  animation: 2s ease 2s both animationButton;
+  background: linear-gradient(315deg, var(--pink), var(--purple), var(--pink));
+  color: var(--purple);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  max-width: 150px;
+  position: absolute;
+  content: "";
+  height: 100%;
+  left: -100%;
+}
+
+.document-active .text {
+  animation: .5s ease .5s both animationTextButton;
+  position: absolute;
+  color: var(--purple);
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes animationTextButton {
+  100% {
+    transform: translateY(100px);
+  }
+}
+
+@keyframes animationButton {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
 
 .main__portfolio .main__portfolio-specialty .background__image {
   object-fit: cover;
@@ -266,7 +382,6 @@ export default {
 }
 
 .main__portfolio .main__portfolio-about {
-
   display: flex;
   align-items: start;
   justify-content: space-around;
@@ -278,8 +393,9 @@ export default {
   height: 100%;
   display: grid;
   place-items: left;
-  padding: 0 0 0 5.4rem;
+  padding: 0 0 0 4.5rem;
   grid-gap: 10px;
+
 }
 
 .main__portfolio .main__portfolio-about .social .name {
@@ -287,6 +403,9 @@ export default {
   font-size: 1rem;
   color: var(--white-text);
   font-weight: 400;
+  width: 100%;
+  max-width: 200px;
+  text-align: center;
 }
 
 .main__portfolio .main__portfolio-about .social .name::first-letter {
@@ -295,48 +414,138 @@ export default {
 }
 
 .main__portfolio .main__portfolio-about .social .logos {
-  padding: 4px 0;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   width: 100%;
-  max-width: 130px;
+  max-width: 200px;
+  padding: 4px 0;
 }
 
 .main__portfolio .main__portfolio-about .social .logos .link__email .email,
 .link__github .github,
 .link__linkedin .linkedin {
-  color: var(--cyan);
+  color: var(--purple);
   cursor: pointer;
 }
 
-.main__portfolio .main__portfolio-about .social .profile {
+.main__portfolio .main__portfolio-about .social .box {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  background-color: #000;
   border-radius: 50%;
-  width: 115px;
-  height: 115px;
-  border: 3px solid var(--cyan);
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
-.main__portfolio .main__portfolio-about .social .profile .photo {
-  clip-path: circle(50% at 50% 50%);
-  width: 100px;
-  height: 100px;
+.main__portfolio .main__portfolio-about .social .box::before {
+  content: '';
+  position: absolute;
+  inset: -10px 30px;
+  background: linear-gradient(315deg, var(--pink), var(--purple), var(--greenblue));
+  transition: .5s;
+  animation: animate 4s linear infinite;
+}
+
+@keyframes animate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.main__portfolio .main__portfolio-about .social .box:hover::before {
+  inset: -20px 0px;
+}
+
+.main__portfolio .main__portfolio-about .social .box::after {
+  content: '';
+  position: absolute;
+  inset: 5px;
+  background-color: var(--blue-dark);
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.main__portfolio .main__portfolio-about .social .box .content {
+  display: flex;
+  position: absolute;
+  inset: 18px;
+  border: 3px solid var(--purple);
+  z-index: 3;
+  border-radius: 50%;
+  color: var(--white);
+  overflow: hidden;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.main__portfolio .main__portfolio-about .social .box .content img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+  transition: .5s;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.main__portfolio .main__portfolio-about .social .box:hover .content img {
+  opacity: 0;
+}
+
+.main__portfolio .main__portfolio-about .social .box .content h2 {
+  position: relative;
+  font-size: .8rem;
+  text-align: center;
+  color: var(--white);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0 10px;
+  white-space: nowrap;
+}
+
+.main__portfolio .main__portfolio-about .social .box .content h2 span {
+  font-weight: 300;
+  font-size: 0.75em;
+}
+
+.main__portfolio .main__portfolio-about .social .box .content a {
+  position: relative;
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: var(--white);
+  color: var(--black);
+  border-radius: 25px;
+  font-weight: 500;
+  font-size: .7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  transition: 0.5s;
+}
+
+.main__portfolio .main__portfolio-about .social .box .content a:hover {
+  letter-spacing: 0.2rem;
 }
 
 .main__portfolio .main__portfolio-about .about {
-
   display: grid;
   place-items: left;
   grid-gap: 1rem;
-  width: 50%;
+  flex: 1;
   height: 100%;
   min-height: 210px;
-  padding: 10px 1rem;
+  padding: 10px 2.2rem 10px 10px;
+
 }
 
 .main__portfolio .main__portfolio-about .about .title {
@@ -351,7 +560,7 @@ export default {
 }
 
 .main__portfolio .main__portfolio-about .about .title .book {
-  color: var(--cyan);
+  color: var(--purple);
 }
 
 .main__portfolio .main__portfolio-about .about .about__my {
@@ -365,7 +574,6 @@ export default {
 }
 
 .main__portfolio .main__portfolio-about .about .description {
-  text-transform: capitalize;
   color: var(--white-text);
   word-wrap: break-word;
   font-size: 1rem;
@@ -391,7 +599,7 @@ export default {
 }
 
 .main__portfolio .main__portfolio-skills .skills .box {
-  color: var(--cyan);
+  color: var(--purple);
 }
 
 .main__portfolio .main__portfolio-skills .technology {
@@ -431,8 +639,8 @@ export default {
 .html .logo__vue,
 .logo__sass,
 .logo__git {
-  width: 100px;
-  height: 100px;
+  width: 70px;
+  height: 70px;
   object-fit: cover;
 }
 
@@ -515,9 +723,8 @@ export default {
 
   .main__portfolio .main__portfolio-about .about,
   .description {
-    padding:10px;
+    padding: 10px;
   }
-
 
   .main__portfolio .main__portfolio-about .about .title {
     justify-content: center;
