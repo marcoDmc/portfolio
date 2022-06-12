@@ -6,7 +6,9 @@
 
 * Project status: **under development**
 
-
+![](./src/assets/desktop-video.gif)
+#
+![](./src/assets/mobile-video.gif)
 
 
 
@@ -18,6 +20,10 @@ See below for some sample images of the:
 ![](./src/assets/desktop-main.png)
 
 ![](./src/assets/desktop-footer.png)
+
+![](./src/assets/desktop-repos.png)
+
+![](./src/assets/desktop-skills.png)
 #
 
 mobile version:

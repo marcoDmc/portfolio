@@ -7,20 +7,26 @@
 * Status do projeto: em desenvolvimento
 
 
-
+![](./src/assets/desktop-video.gif)
+#
+![](./src/assets/mobile-video.gif)
 
 
 Veja abaixo algumas imagens de exemplo do:
 
-### Capturas de tela
+### captura de tela
 ![](./src/assets/desktop-top.png)
 
 ![](./src/assets/desktop-main.png)
 
 ![](./src/assets/desktop-footer.png)
+
+![](./src/assets/desktop-repos.png)
+
+![](./src/assets/desktop-skills.png)
 #
 
-versão móvel:
+versão mobile:
 
 ![](./src/assets/mobile-top.png)
 #
@@ -33,6 +39,7 @@ versão móvel:
 ![](./src/assets/mobile-skills.png)
 #
 ![](./src/assets/mobile-repos.png)
+
 
 
 
