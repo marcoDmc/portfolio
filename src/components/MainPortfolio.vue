@@ -48,10 +48,10 @@
         </h2>
         <strong class="about__my">conheça um pouco sobre mim</strong>
         <p class="description">
-          Desenvolvedor front-end natural do no rio de janeiro. Tenho 1 ano e meio de experiência nas seguintes
-          tecnologias , Javascript , HTML , CSS, React , Styled-Components e GIT. Também possuo breve experiência em
+          Desenvolvedor front-end natural do rio de janeiro. Tenho 1 ano e meio de experiência nas seguintes
+          tecnologias sendo elas, Javascript , HTML , CSS, React , Styled-Components e GIT. Também possuo breve experiência em
           mongoDB , Express
-          , Sass , MySQL, Webpack,Vue e Node .
+          , Sass , MySQL, Webpack,Vue e Node js .
           Estou aberto a oportunidades e projetos interessantes.
 
         </p>
