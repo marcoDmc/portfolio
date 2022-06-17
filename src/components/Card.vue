@@ -1,5 +1,5 @@
 <template>
-  <a :href="url" class="card" target="_blank">
+  <a :href="url" class="card" target="_blank" v-motion-pop-visible>
     <img src="../assets/github.svg" alt="photo project" class="photo__card" />
     <strong class="title">{{ name }}</strong>
     <p class="description">
@@ -42,7 +42,7 @@ export default {
   right: 0;
   width: 90%;
   height: 4px;
-  background-color: var(--pink);
+  background: linear-gradient(300deg , var(--black),var(--red),var(--black));
   border-radius: 5px 5px 0 0;
 }
 

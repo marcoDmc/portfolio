@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="app">
     <Header />
     <Main />
     <Footer />
@@ -35,14 +35,20 @@ body {
   font-family: sans-serif;
   font-size: 1rem;
   list-style: none;
-  font-family: 'Titillium Web', sans-serif;
-  overflow-x: none;
-  background-color:var(--blue-dark);
-
+  font-family: "Titillium Web", sans-serif;
+  overflow-x: hidden;
+  background-color: var(--blue-dark);
 }
 
 a {
   text-decoration: none;
 
+}
+li{
+  list-style:none;
+}
+.app{
+  padding:0;
+  height:100%;
 }
 </style>

@@ -14,7 +14,11 @@
       </span>
 
       <span class="github">
-        <a href="https://github.com/marcosDmc" target="_blank" class="github__url">
+        <a
+          href="https://github.com/marcosDmc"
+          target="_blank"
+          class="github__url"
+        >
           github.com/marcosDmc
         </a>
         <BrandGithubIcon size="30" class="icon__github" />
@@ -78,12 +82,10 @@ export default {
   justify-content: center;
   gap: 2rem;
   flex-direction: column;
-  background: linear-gradient(
-    to right,
-    var(--blue-dark),
-    var(--blue-dark-light),
-    var(--blue-dark)
-  );
+  background-color: var(--black);
+  padding:10px 0;
+  height:100%;
+ 
 }
 
 .footer__portfolio .contact {
@@ -97,14 +99,14 @@ export default {
 }
 
 .footer__portfolio .contact .box {
-  color: var(--pink);
+  color: var(--red);
 }
 
 .footer__portfolio .pharse {
   text-align: center;
   word-wrap: break-word;
   padding: 0 1rem;
-  color: var(--white-text);
+  color: var(--white);
   width: 80%;
 }
 
@@ -147,13 +149,20 @@ export default {
 .email .icon__email,
 .github .icon__github,
 .linkedin .icon__linkedin {
-  color: var(--pink);
+  color: var(--white-text);
+}
+.footer__portfolio .network .tel .icon__tel:hover,
+.email .icon__email:hover,
+.github .icon__github:hover,
+.linkedin .icon__linkedin:hover{
+  color:var(--white);
+  transition:.4s ease;
 }
 
 .footer__portfolio .network .tel,
 .email,
 .github,
-.linkedin p,
+.linkedin,
 a {
   color: var(--white-text);
   font-weight: 700;
@@ -165,11 +174,13 @@ a {
   padding: 2rem;
   text-align: center;
   color: var(--white-text);
-  border-bottom: 3px solid var(--purple);
+  border-bottom: 3px solid var(--red);
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 1rem;
+  height:100%;
+  min-height:100px;
 }
 
 @media (max-width: 900px) {
