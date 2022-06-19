@@ -30,12 +30,12 @@
 
       </span>
       <img
-        src="https://raw.githubusercontent.com/MicaelliMedeiros/micaellimedeiros/master/image/computer-illustration.png"
-        alt="Computador imagem" class="background__image" v-motion-fade-visible-once />
+        src="../assets/undraw_vue.svg"
+        alt="Computador imagem" class="background__image"  />
     </section>
     <section class="main__portfolio-about">
       <div class="social">
-        <div class="box" v-motion-fade-visible-once>
+        <div class="box">
           <div class="content">
             <img v-bind:src="profile.avatar_url" alt="profile" class="photo" />
             <h2>@marcoDmc <br><span>front-end developer</span></h2>

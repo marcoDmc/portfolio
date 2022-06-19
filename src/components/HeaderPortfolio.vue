@@ -193,6 +193,7 @@ export default {
     position: absolute;
     top: -6px;
     content: "";
+    left:0;
     border-radius: 5px;
   }
 
@@ -202,6 +203,7 @@ export default {
     background-color: var(--red);
     position: absolute;
     bottom: -6px;
+    left:0;
     content: "";
     border-radius: 5px;
   }
