@@ -38,8 +38,7 @@ mobile version:
 ![](./src/assets/mobile-menu-open.png)
 #
 ![](./src/assets/mobile-repos.png)
-#
-![](./src/assets/mobile-skills.png)
+
 
 
 
