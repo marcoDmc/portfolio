@@ -14,24 +14,22 @@
           <span class="text">
             <CheckIcon v-if="completed === 'completo'" size="20" class="check" />
             <ArrowDownIcon v-else size="20" class="arrow" v-motion :initial="{
-              y:4,
+              y: 4,
             }" :enter="{
-                    y:0,
-            transition: {
-            repeat: Infinity,
-            repeatType: 'loop',
-            repeatDelay:800,
-            mass:0.8
-            },
-          }" />
+  y: 0,
+  transition: {
+    repeat: Infinity,
+    repeatType: 'loop',
+    repeatDelay: 800,
+    mass: 0.8
+  },
+}" />
             {{ completed }}
           </span>
         </a>
 
       </span>
-      <img
-        src="../assets/undraw_vue.svg"
-        alt="Computador imagem" class="background__image"  />
+      <img src="../assets/undraw_vue.svg" alt="Computador imagem" class="background__image" />
     </section>
     <section class="main__portfolio-about">
       <div class="social">
@@ -77,31 +75,111 @@
         skills
       </h3>
       <span class="technology">
-        <div class="sass" v-motion-pop-visible>
+        <div class="container sass" v-motion-pop-visible>
+          <div class="cardbox">
+            <div class="imgbx">
 
-          <small class="name">sass</small>
-          <img src="../assets/sass.svg" alt="sass logo" class="logo logo__sass" />
+              <img src="../assets/sass.jpg" alt="sass logo" class="logo logo__sass" />
+            </div>
+            <div class="content">
+
+              <strong class="name">sass</strong>
+              <p class="description">
+                O SASS é uma linguagem de extensão do CSS, a sigla significa “Syntactically Awesome Style Sheets”
+                traduzindo
+                ao pé da letra
+              </p>
+            </div>
+          </div>
         </div>
-        <div class="css" v-motion-pop-visible>
-          <small class="name">css</small>
-          <img src="../assets/css.svg" alt="css logo" class="logo logo__css" />
+
+        <div class="container git" v-motion-pop-visible>
+          <div class="cardbox">
+            <div class="imgbx">
+
+              <img src="../assets/git.png" alt="git logo" class="logo logo__git" />
+            </div>
+            <div class="content">
+
+              <strong class="name">git</strong>
+              <p class="description">
+                Sistema de controle de versão open source utilizado para
+                controlar o histórico de alterações de arquivos e de projetos de desenvolvimento de
+                software
+              </p>
+            </div>
+          </div>
         </div>
-        <div class="html" v-motion-pop-visible>
-          <small class="name">html</small>
-          <img src="../assets/html.svg" alt="html logo" class="logo logo__vue" />
+
+        <div class="container react" v-motion-pop-visible>
+          <div class="cardbox">
+            <div class="imgbx">
+
+              <img src="../assets/react.png" alt="react logo" class="logo logo__react" />
+            </div>
+            <div class="content">
+
+              <strong class="name">react</strong>
+              <p class="description">
+                O React é a biblioteca mais popular do JavaScript e é usada para construir uma interface de usuário
+                (IU).
+              </p>
+            </div>
+          </div>
         </div>
-        <div class="javascript" v-motion-pop-visible>
-          <small class="name">javascript</small>
-          <img src="../assets/js.svg" alt="jvascript logo" class="logo logo__javascript" />
+
+        <div class="container javascript" v-motion-pop-visible>
+          <div class="cardbox">
+            <div class="imgbx">
+
+              <img src="../assets/javascript.png" alt="javascript logo" class="logo logo__javascript" />
+            </div>
+            <div class="content">
+
+              <strong class="name">javascript</strong>
+              <p class="description">
+                JavaScript é uma linguagem de programação,interpretada, orientada a objetos, baseada em
+                protótipos e em first-class functions (funções de primeira classe)
+              </p>
+            </div>
+          </div>
         </div>
-        <div class="react" v-motion-pop-visible>
-          <small class="name">react</small>
-          <img src="../assets/react.svg" alt="react logo" class="logo logo__react" />
+
+        <div class="container html" v-motion-pop-visible>
+          <div class="cardbox">
+            <div class="imgbx">
+
+              <img src="../assets/html.png" alt="html logo" class="logo logo__html" />
+            </div>
+            <div class="content">
+
+              <strong class="name">html</strong>
+              <p class="description">
+                O HTML é o componente base
+                da web. Ele permite a construção de websites e a inserção de novos conteúdos, como
+                imagens e vídeos, por meio dos hipertextos.
+              </p>
+            </div>
+          </div>
         </div>
-        <div class="git" v-motion-pop-visible>
-          <small class="name">git</small>
-          <img src="../assets/git.svg" alt="git logo" class="logo logo__git" />
+        <div class="container css" v-motion-pop-visible>
+          <div class="cardbox">
+            <div class="imgbx">
+
+              <img src="../assets/css.png" alt="css logo" class="logo logo__css" />
+            </div>
+            <div class="content">
+
+              <strong class="name">css</strong>
+              <p class="description">
+                Trata-se de uma linguagem de marcação, amplamente utilizada com HTML ou XHTML, e representa diversas
+                possibilidades para a formatação.
+              </p>
+            </div>
+          </div>
         </div>
+
+
       </span>
     </section>
     <section class="main__portfolio-laboratory">
@@ -216,6 +294,9 @@ export default {
   --greenblue: #2BE3F2;
   --red: #D2062C;
   --dark: #000;
+  --pinkchock: #E88CB7;
+  --blue: #254BDD;
+  --yellow: #EFD81D;
 }
 
 .main__portfolio {
@@ -313,7 +394,7 @@ export default {
   padding: 10px;
   border-radius: 5px;
   background: transparent;
-  color: var(--red);
+  color: var(--pink);
   font-size: 0.8rem;
   text-transform: uppercase;
   text-align: center;
@@ -349,7 +430,7 @@ export default {
   padding: 10px;
   border-radius: 5px;
   background: transparent;
-  color: var(--red);
+  color: var(--pink);
   font-size: 0.8rem;
   text-transform: uppercase;
   text-align: center;
@@ -659,46 +740,279 @@ export default {
 }
 
 .main__portfolio .main__portfolio-skills .technology {
-  display: flex;
-  gap: 2rem;
-  width: 100%;
-  max-width: 800px;
-  align-items: center;
-  overflow: hidden;
-  justify-content: space-between;
-}
-
-.main__portfolio .main__portfolio-skills .technology .css,
-.javascript,
-.react,
-.html,
-.sass,
-.git {
   display: grid;
+  width: 100%;
   place-items: center;
+  overflow: hidden;
+  height: auto;
+  min-height: 600px;
+  grid-gap: 1em;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 0 1em;
+  padding: 10px 0 0 0;
 }
 
-.main__portfolio .main__portfolio-skills .technology .css .name,
-.javascript .name,
-.react .name,
-.html .name,
-.sass .name,
-.git .name {
-  color: var(--white-text);
-  font-size: 1.1rem;
-  text-transform: uppercase;
+.main__portfolio .main__portfolio-skills .technology .container {
+  position: relative;
+  width: 100%;
+  max-width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 30px 1px;
+  background-color: transparent;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
-.main__portfolio .main__portfolio-skills .technology .css .logo__css,
-.javascript .logo__javascript,
-.react .logo__react,
-.html .logo__vue,
-.logo__sass,
-.logo__git {
-  width: 70px;
-  height: 70px;
+.main__portfolio .main__portfolio-skills .technology .sass::before {
+  content: "";
+  width: 80%;
+  height: 3px;
+  border-radius: 10px;
+  background: linear-gradient(350deg, transparent, var(--pink), var(--pink));
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.main__portfolio .main__portfolio-skills .technology .css::before {
+  content: "";
+  width: 80%;
+  height: 3px;
+  border-radius: 10px;
+  background: linear-gradient(350deg, transparent, var(--blue), var(--blue));
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.main__portfolio .main__portfolio-skills .technology .react::before {
+  content: "";
+  width: 80%;
+  height: 3px;
+  border-radius: 10px;
+  background: linear-gradient(350deg, transparent, var(--greenblue), var(--greenblue));
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.main__portfolio .main__portfolio-skills .technology .javascript::before {
+  content: "";
+  width: 80%;
+  height: 3px;
+  border-radius: 10px;
+  background: linear-gradient(350deg, transparent, var(--yellow), var(--yellow));
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.main__portfolio .main__portfolio-skills .technology .html::before {
+  content: "";
+  width: 80%;
+  height: 3px;
+  border-radius: 10px;
+  background: linear-gradient(350deg, transparent, var(--orange), var(--orange));
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.main__portfolio .main__portfolio-skills .technology .git::before {
+  content: "";
+  width: 80%;
+  height: 3px;
+  border-radius: 10px;
+  background: linear-gradient(350deg, transparent, var(--red), var(--red));
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.main__portfolio .main__portfolio-skills .technology .container .cardbox {
+  position: relative;
+  width: 90%;
+  border-radius: 10px;
+  height: 200px;
+  background-color: var(--white);
+  transition: .3s ease-in-out;
+  margin: 10px;
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 5px 202px rgba(0, 0, 0, 0.5);
+  align-items: center;
+  justify-content: start;
+
+}
+
+.main__portfolio .main__portfolio-skills .technology .container .cardbox:hover {
+  height: 350px;
+}
+
+.main__portfolio .main__portfolio-skills .technology .container .cardbox .content {
+  position: relative;
+  margin-top: 140px;
+  padding: 0 15px 30px 15px;
+  text-align: center;
+  color: #111;
+  visibility: hidden;
+  opacity: 0;
+  transition: .3s ease-in-out;
+}
+
+.main__portfolio .main__portfolio-skills .technology .container .cardbox .content .description {
+  font-size: .9rem;
+  padding: 10px;
+  width: 100%;
+  flex: 1;
+}
+
+.main__portfolio .main__portfolio-skills .technology .container .cardbox .content .name {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.main__portfolio .main__portfolio-skills .technology .sass .cardbox .content .name {
+  color: var(--pink);
+  text-shadow: 0 3px 3px var(--black);
+  position: relative;
+}
+
+.main__portfolio .main__portfolio-skills .technology .sass .cardbox .content .name::before {
+  position: absolute;
+  bottom: -6px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--pink);
+  content: '';
+  left: 45%;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25);
+}
+
+.main__portfolio .main__portfolio-skills .technology .css .cardbox .content .name {
+  color: var(--blue);
+  text-shadow: 0 3px 3px var(--white-text);
+  position: relative;
+}
+
+.main__portfolio .main__portfolio-skills .technology .css .cardbox .content .name::before {
+  position: absolute;
+  bottom: -6px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--blue);
+  content: '';
+  left: 45%;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25);
+}
+
+.main__portfolio .main__portfolio-skills .technology .react .cardbox .content .name {
+  color: var(--greenblue);
+  text-shadow: 0 3px 3px var(--black);
+  position: relative;
+}
+
+.main__portfolio .main__portfolio-skills .technology .react .cardbox .content .name::before {
+  position: absolute;
+  bottom: -6px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--greenblue);
+  content: '';
+  left: 45%;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25);
+}
+
+.main__portfolio .main__portfolio-skills .technology .javascript .cardbox .content .name {
+  color: var(--yellow);
+  text-shadow: 0 3px 3px var(--black);
+  position: relative;
+}
+
+.main__portfolio .main__portfolio-skills .technology .javascript .cardbox .content .name::before {
+  position: absolute;
+  bottom: -6px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--yellow);
+  content: '';
+  left: 45%;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25);
+}
+
+.main__portfolio .main__portfolio-skills .technology .html .cardbox .content .name {
+  color: var(--orange);
+  text-shadow: 0 3px 3px var(--black);
+  position: relative;
+}
+
+.main__portfolio .main__portfolio-skills .technology .html .cardbox .content .name::before {
+  position: absolute;
+  bottom: -6px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--orange);
+  content: '';
+  left: 45%;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25);
+}
+
+.main__portfolio .main__portfolio-skills .technology .git .cardbox .content .name {
+  color: var(--red);
+  text-shadow: 0 3px 3px var(--black);
+  position: relative;
+}
+
+.main__portfolio .main__portfolio-skills .technology .git .cardbox .content .name::before {
+  position: absolute;
+  bottom: -6px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--red);
+  content: '';
+  left: 45%;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25);
+}
+
+.main__portfolio .main__portfolio-skills .technology .container .cardbox:hover .content {
+  visibility: visible;
+  opacity: 1;
+  margin-top: -40px;
+  transition-delay: .3s;
+}
+
+.main__portfolio .main__portfolio-skills .technology .container .cardbox .imgbx {
+  position: relative;
+  width: 100%;
+  height: 150px;
+  top: -50px;
+  left: 0px;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+.main__portfolio .main__portfolio-skills .technology .container .cardbox .imgbx .logo {
   object-fit: cover;
+  width: 90px;
+  height: 90px;
+  z-index: 1;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0);
 }
+
 
 .main__portfolio-laboratory {
   padding: 2rem 0;
@@ -775,7 +1089,73 @@ export default {
     gap: 10px;
   }
 
-  .main__portfolio .main__portfolio-skills .technology,
+  .main__portfolio .main__portfolio-skills .technology {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2rem 1rem;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    height: auto;
+  }
+
+  .main__portfolio .main__portfolio-skills .technology .container {
+    position: relative;
+    width: 100%;
+    max-width: 230px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 0 1em;
+    border-radius: 4px;
+    min-height: 500px;
+    background-color:transparent;
+  }
+
+  .main__portfolio .main__portfolio-skills .technology .container .cardbox:hover {
+    height: 420px;
+  }
+
+  .main__portfolio .main__portfolio-skills .technology .container .content .description {
+    text-align: center;
+    text-overflow: ellipsis;
+    width: 100%;
+  }
+
+  .main__portfolio .main__portfolio-skills .technology .container .cardbox .content {
+    position: relative;
+    margin-top: 0px;
+    padding: 10px 5px;
+    text-align: center;
+    color: #111;
+    visibility: hidden;
+    opacity: 0;
+    transition: .3s ease-in-out;
+    height: 100%;
+
+
+  }
+
+  .main__portfolio .main__portfolio-skills .technology .container .cardbox {
+    position: relative;
+    width: 100%;
+    max-width: 250px;
+    height: 200px;
+    background-color: var(--white);
+    transition: .3s ease-in-out;
+    margin: 30px 10px;
+    padding: 20px 15px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 5px 202px rgba(0, 0, 0, 0.5);
+
+  }
+
+  .main__portfolio .main__portfolio-skills .technology .container .cardbox .imgbx {
+    left: 5px;
+  }
+
   .main__portfolio .main__portfolio-laboratory {
     display: grid;
     grid-template-columns: repeat(2, 1fr);

@@ -191,7 +191,7 @@ export default {
     height: 3px;
     background-color: var(--red);
     position: absolute;
-    top: -6px;
+    top: -7px;
     content: "";
     left:0;
     border-radius: 5px;
@@ -202,7 +202,7 @@ export default {
     height: 3px;
     background-color: var(--red);
     position: absolute;
-    bottom: -6px;
+    bottom: -7px;
     left:0;
     content: "";
     border-radius: 5px;
