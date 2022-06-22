@@ -26,6 +26,9 @@ Veja abaixo algumas imagens de exemplo do:
 
 versão mobile:
 
+#
+![](./src/assets/card-skill.png)
+#
 ![](./src/assets/mobile-top.png)
 #
 ![](./src/assets/mobile-menu-active.png)
@@ -35,7 +38,6 @@ versão mobile:
 ![](./src/assets/mobile-repos.png)
 #
 ![](./src/assets/mobile-skills.png)
-#
 
 
 

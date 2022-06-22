@@ -28,6 +28,9 @@ See below for some sample images of the:
 
 mobile version:
 
+#
+![](./src/assets/card-skill.png)
+#
 ![](./src/assets/mobile-top.png)
 #
 ![](./src/assets/mobile-menu-active.png)
@@ -37,7 +40,7 @@ mobile version:
 ![](./src/assets/mobile-repos.png)
 #
 ![](./src/assets/mobile-skills.png)
-#
+
 
 
 
