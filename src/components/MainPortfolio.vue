@@ -35,7 +35,8 @@
       <div class="social">
         <div class="box">
           <div class="content">
-            <img v-bind:src="profile.avatar_url" alt="profile" class="photo" />
+
+             <img src="../assets/perfil.png" alt="profile" class="photo" />
             <h2>@marcoDmc <br><span>front-end developer</span></h2>
             <a href="https://github.com/marcoDmc" target="_blank">hire me</a>
           </div>
@@ -182,14 +183,13 @@
 
       </span>
     </section>
+
     <section class="main__portfolio-laboratory">
-      <Card name="auth front-end" description="repositório criado para praticar autenticação de usuários"
-        url="https://github.com/marcoDmc/auth-frontend" />
-      <Card name="sea-shopping" url="https://github.com/marcoDmc/sea-shopping-frontend"
-        description="aplicativo de lista de compras" />
-      <Card name="tourism website" url="https://github.com/marcoDmc/space-tourism"
-        description="landpage space's multi-page tourism " />
-      <Card name="calc" url="https://github.com/marcoDmc/calculadora-de-gorjeta" description="calculadora de gorjeta" />
+        <h3 class="laboratory">
+        <BoxIcon class="box" />
+        laboratório
+      </h3>
+    <Swiper/>
     </section>
   </main>
 </template>
@@ -205,6 +205,8 @@ import {
   ArrowDownIcon
 } from "vue-tabler-icons";
 import Card from "./Card.vue";
+import Swiper from "./Swiper.vue";
+
 
 let xml = new XMLHttpRequest();
 export default {
@@ -227,6 +229,7 @@ export default {
   methods: {
     handleSetResponseFormatJson: function () {
       this.profile = JSON.parse(xml.responseText);
+     
     },
     handleGetProfileGithub: async function () {
       xml.addEventListener("load", this.handleSetResponseFormatJson);
@@ -260,6 +263,7 @@ export default {
   mounted: function () {
     this.profile = this.handleGetProfileGithub();
 
+
   },
   components: {
     BrandGithubIcon,
@@ -269,7 +273,8 @@ export default {
     Card,
     BookIcon,
     CheckIcon,
-    ArrowDownIcon
+    ArrowDownIcon,
+    Swiper
   },
 };
 </script>
@@ -1009,18 +1014,32 @@ export default {
   object-fit: cover;
   width: 90px;
   height: 90px;
-  z-index: 1;
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0);
+  transform:translateX(-1px);
+
 }
 
 
 .main__portfolio-laboratory {
-  padding: 2rem 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 3em;
+  flex-direction:column;
+  height:100%;
+  min-height:600px;
   width: 100%;
+}
+.main__portfolio-laboratory .laboratory {
+  text-transform: capitalize;
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+}
+
+.main__portfolio-laboratory .box {
+  color: var(--red);
 }
 
 @media (max-width: 900px) {
@@ -1156,11 +1175,5 @@ export default {
     left: 5px;
   }
 
-  .main__portfolio .main__portfolio-laboratory {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    padding: 2rem 1rem;
-    place-items: center;
-  }
 }
 </style>
