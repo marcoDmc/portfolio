@@ -8,9 +8,10 @@
           Olá , prazer em conhecê-lo (a), veja alguns dos meus projetos logo
           abaixo.
         </p>
-
-        <a v-bind:href="ancor" download="curriculo" v-bind:class="active"
+<a v-bind:href="ancor"  download="true" v-bind:class="active"
           v-on:click="handleAnimationButtonDownload($event)">
+        <!-- <a v-bind:href="ancor" download="curriculo" v-bind:class="active"
+          v-on:click="handleAnimationButtonDownload($event)"> -->
           <span class="text">
             <CheckIcon v-if="completed === 'completo'" size="20" class="check" />
             <ArrowDownIcon v-else size="20" class="arrow" v-motion :initial="{
@@ -26,7 +27,9 @@
               }" />
             {{ completed }}
           </span>
+        <!-- </a> -->
         </a>
+        
 
       </span>
       <img src="../assets/undraw_vue.svg" alt="Computador imagem" class="background__image" />
@@ -239,7 +242,7 @@ export default {
     handleDownload: function (event) {
       event.preventDefault();
       setTimeout(() => {
-        this.ancor = "../assets/Profile.pdf"
+        this.ancor = "../../public/Profile.pdf"
       }, 10000)
 
     },
@@ -1145,10 +1148,6 @@ export default {
     left: 5px;
   }
 
-  .main__portfolio .main__portfolio-skills .technology .git .cardbox .content .name::before {
-    left: 50%;
-  }
-
   .main__portfolio .main__portfolio-skills .technology .javascript .cardbox .content .description {
 
     padding: 10px;
@@ -1190,17 +1189,6 @@ export default {
     display: flex;
     flex-direction: column;
     box-shadow: 0 5px 202px rgba(0, 0, 0, 0.5);
-  }
-
-  .main__portfolio .main__portfolio-skills .technology .container .cardbox .content .name::before {
-    position: absolute;
-    bottom: -6px;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    content: '';
-    left: 50%;
-    box-shadow: 0 0 5px 0 var(--black);
   }
 }
 </style>
