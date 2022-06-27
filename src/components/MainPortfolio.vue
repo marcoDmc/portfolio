@@ -16,14 +16,14 @@
             <ArrowDownIcon v-else size="20" class="arrow" v-motion :initial="{
               y: 4,
             }" :enter="{
-  y: 0,
-  transition: {
-    repeat: Infinity,
-    repeatType: 'loop',
-    repeatDelay: 800,
-    mass: 0.8
-  },
-}" />
+                y: 0,
+                transition: {
+                  repeat: Infinity,
+                  repeatType: 'loop',
+                  repeatDelay: 800,
+                  mass: 0.8
+                },
+              }" />
             {{ completed }}
           </span>
         </a>
@@ -31,12 +31,12 @@
       </span>
       <img src="../assets/undraw_vue.svg" alt="Computador imagem" class="background__image" />
     </section>
-    <section class="main__portfolio-about">
+    <section class="main__portfolio-about" id="about">
       <div class="social">
         <div class="box">
           <div class="content">
 
-             <img src="../assets/perfil.png" alt="profile" class="photo" />
+            <img v-bind:src="profile.avatar_url" alt="profile" class="photo" />
             <h2>@marcoDmc <br><span>front-end developer</span></h2>
             <a href="https://github.com/marcoDmc" target="_blank">hire me</a>
           </div>
@@ -70,7 +70,7 @@
         </p>
       </div>
     </section>
-    <section class="main__portfolio-skills">
+    <section class="main__portfolio-skills" id="skills">
       <h3 class="skills">
         <BoxIcon class="box" />
         skills
@@ -133,7 +133,8 @@
           <div class="cardbox">
             <div class="imgbx">
 
-              <img src="../assets/javascript.png" alt="javascript logo" class="logo logo__javascript" />
+              <img src="../assets/javascript.png" alt="javascript logo" class="logo logo__javascript"
+                style="height:110px" />
             </div>
             <div class="content">
 
@@ -167,7 +168,7 @@
           <div class="cardbox">
             <div class="imgbx">
 
-              <img src="../assets/css.png" alt="css logo" class="logo logo__css" />
+              <img src="../assets/css.png" alt="css logo" class="logo logo__css" style="height:100px" />
             </div>
             <div class="content">
 
@@ -184,12 +185,12 @@
       </span>
     </section>
 
-    <section class="main__portfolio-laboratory">
-        <h3 class="laboratory">
+    <section class="main__portfolio-laboratory" id="laboratory">
+      <h3 class="laboratory">
         <BoxIcon class="box" />
         laboratório
       </h3>
-    <Swiper/>
+      <Swiper />
     </section>
   </main>
 </template>
@@ -204,7 +205,6 @@ import {
   CheckIcon,
   ArrowDownIcon
 } from "vue-tabler-icons";
-import Card from "./Card.vue";
 import Swiper from "./Swiper.vue";
 
 
@@ -229,7 +229,7 @@ export default {
   methods: {
     handleSetResponseFormatJson: function () {
       this.profile = JSON.parse(xml.responseText);
-     
+
     },
     handleGetProfileGithub: async function () {
       xml.addEventListener("load", this.handleSetResponseFormatJson);
@@ -270,7 +270,6 @@ export default {
     BrandLinkedinIcon,
     BrandGmailIcon,
     BoxIcon,
-    Card,
     BookIcon,
     CheckIcon,
     ArrowDownIcon,
@@ -281,46 +280,29 @@ export default {
 
 <style>
 :root {
-  --black: #222227;
-  --grafit: #141414;
-  --bluish-green: #2f6466;
-  --opaque-blue: hsl(196, 29%, 77%);
-  --dull-gray: #585d62;
-  --cyan: #5cc4c4;
-  --orange: #c36655;
-  --Moss-green: #6d8377;
-  --white: #FEFEFE;
-  --blue-dark: #26262E;
-  --blue-dark-light: #222229;
-  --blue-light: #222229;
-  --white-text: #72777e;
-  --purple: #879FFA;
-  --pink: #CCCCF5;
-  --greenblue: #2BE3F2;
-  --red: #D2062C;
-  --dark: #000;
-  --pinkchock: #E88CB7;
-  --blue: #254BDD;
-  --yellow: #EFD81D;
+  --blue-green: #045E6A;
+  --medium-brown-gray: #585453;
+  --water-green: #38989A;
+  --black: #06070A;
+  --white: #F1F2F4;
+  --faded-white: #F9FAFB;
+  --gray: #B8BEC4;
+  --moss-green: #537977;
+  --tiny: 11px;
+  --small: 14px;
+  --medium: 18px;
+  --large: 24px;
+  --very-large: 36px;
+  --extra-large: 48px;
 }
 
 .main__portfolio {
   width: 100%;
   height: 100%;
-  padding: 0 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: var(--blue-dark);
-  scroll-snap-type: y mandatory;
-
-}
-
-.main__portfolio section {
-  height: 100%;
-  min-height: 600px;
-  scroll-snap-align: start;
-  width: 100%;
+  background-color: var(--faded-white);
 }
 
 .main__portfolio .main__portfolio-specialty {
@@ -329,31 +311,36 @@ export default {
   width: 100%;
   align-items: center;
   justify-content: space-between;
-
+  background-color: var(--black);
+  padding: var(--extra-large);
+  height: 100%;
+  min-height: 600px;
 }
 
 .main__portfolio .main__portfolio-specialty img {
   object-fit: cover;
+  margin-right: var(--large);
 }
 
 .main__portfolio .main__portfolio-specialty .wrapper {
   display: grid;
   place-items: left;
-  grid-gap: 0.8rem;
+  grid-gap: calc(var(--tiny)*1.2);
   width: auto;
+  padding: 0 0 0 4rem;
 }
 
 .main__portfolio .main__portfolio-specialty .wrapper .stack {
   text-transform: uppercase;
-  font-size: 0.8rem;
-  letter-spacing: 3px;
+  font-size: var(--small);
+  letter-spacing: 2px;
   font-weight: 400;
   display: flex;
   max-width: 0;
   overflow: hidden;
-  border-right: 1px solid var(--white);
+  border-right: 1px solid var(--medium-brown-gray);
   white-space: nowrap;
-  color: var(--red);
+  color: var(--white);
   animation: borderHider normal infinite 0.8s,
     typeWriter normal 5s steps(55) both;
 }
@@ -367,40 +354,39 @@ export default {
 @keyframes typeWriter {
   100% {
     width: 100%;
-    max-width: 200px;
+    max-width: 220px;
   }
 }
 
 .main__portfolio .main__portfolio-specialty .wrapper .name {
+
+  font-size: var(--very-large);
+  color: var(--water-green);
+}
+
+.main__portfolio .main__portfolio-specialty .wrapper .name::first-letter {
   text-transform: capitalize;
-  font-size: 1.5rem;
-  color: var(--white);
 }
 
 .main__portfolio .main__portfolio-specialty .wrapper .description {
-  color: var(--white-text);
+  color: var(--white);
+  opacity: .6;
   font-weight: 400;
-  font-size: 0.9rem;
+  font-size: var(--tiny);
   text-align: left;
   word-wrap: break-word;
   width: 100%;
   max-width: 500px;
-}
-
-.main__portfolio .main__portfolio-specialty .wrapper .description::first-letter {
-  text-transform: uppercase;
-  color: var(--red);
-  font-size: 1.1rem;
-  font-weight: 700;
+  font-style: italic;
 }
 
 .document {
-  border: 1px solid var(--white);
+  border: 1px solid var(--water-green);
   padding: 10px;
   border-radius: 5px;
   background: transparent;
-  color: var(--pink);
-  font-size: 0.8rem;
+  color: var(--white);
+  font-size: var(--tiny);
   text-transform: uppercase;
   text-align: center;
   cursor: pointer;
@@ -413,6 +399,7 @@ export default {
   position: relative;
   transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   overflow: hidden;
+  margin-top: var(--tiny);
 }
 
 .document:hover {
@@ -423,7 +410,7 @@ export default {
 .document::before {
   content: "";
   position: absolute;
-  background: linear-gradient(315deg, var(--black), var(--red), var(--black), (--black), var(--red), var(--black));
+  background: linear-gradient(315deg, var(--white), var(--water-green), var(--black), (--medium-brown-gray), var(--water-green), var(--white));
   width: 100%;
   height: 100%;
   left: -100%;
@@ -431,12 +418,12 @@ export default {
 }
 
 .document-active {
-  border: 1px solid var(--pink);
+  border: 1px solid var(--white);
   padding: 10px;
   border-radius: 5px;
   background: transparent;
-  color: var(--pink);
-  font-size: 0.8rem;
+  color: var(--white);
+  font-size: var(--tiny);
   text-transform: uppercase;
   text-align: center;
   cursor: pointer;
@@ -462,14 +449,14 @@ export default {
 
 .document .text .arrow,
 .check {
-  color: var(--pink);
+  color: var(--white);
 }
 
 .document-active::before {
   animation: 2s ease 2s both animationButton;
-  background: linear-gradient(315deg, var(--pink), var(--red), var(--pink));
-  color: var(--red);
-  font-size: 0.8rem;
+  background: linear-gradient(315deg, var(--white), var(--water-green), var(--black));
+  color: var(--white);
+  font-size: var(--tiny);
   text-transform: uppercase;
   text-align: center;
   cursor: pointer;
@@ -484,7 +471,7 @@ export default {
 .document-active .text {
   animation: 0.5s ease 0.5s both animationTextButton;
   position: absolute;
-  color: var(--red);
+  color: var(--white);
   transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   display: flex;
   align-items: center;
@@ -516,8 +503,12 @@ export default {
 .main__portfolio .main__portfolio-about {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   gap: 1rem;
+  background-color: var(--faded-white);
+  padding: var(--extra-large);
+  height: 100%;
+  min-height: 600px;
 }
 
 .main__portfolio .main__portfolio-about .social {
@@ -528,14 +519,15 @@ export default {
   justify-content: center;
   gap: 1.3em;
   flex-direction: column;
-  padding: 0 0 0 4rem;
+  padding: 0 0 0 3rem;
 }
 
 
 .main__portfolio .main__portfolio-about .social .name {
-  text-transform: capitalize;
-  font-size: 1rem;
-  color: var(--white-text);
+
+  font-size: var(--large);
+  color: var(--black);
+  text-shadow: 0 3px 5px var(--medium-brown-gray);
   font-weight: 400;
   width: 100%;
   max-width: 200px;
@@ -543,8 +535,7 @@ export default {
 }
 
 .main__portfolio .main__portfolio-about .social .name::first-letter {
-  color: var(--white);
-  font-weight: 700;
+  text-transform: capitalize;
 }
 
 .main__portfolio .main__portfolio-about .social .logos {
@@ -559,14 +550,14 @@ export default {
 .main__portfolio .main__portfolio-about .social .logos .link__email .email,
 .link__github .github,
 .link__linkedin .linkedin {
-  color: var(--white-text);
+  color: var(--medium-brown-gray);
   cursor: pointer;
 }
 
 .main__portfolio .main__portfolio-about .social .logos .link__email .email:hover,
 .link__github .github:hover,
 .link__linkedin .linkedin:hover {
-  color: var(--white);
+  color: var(--black);
   transition: 0.4s ease;
 }
 
@@ -574,16 +565,17 @@ export default {
   position: relative;
   width: 200px;
   height: 200px;
-  background-color: var(--dark);
+  background-color: var(--black);
   border-radius: 50%;
   overflow: hidden;
+
 }
 
 .main__portfolio .main__portfolio-about .social .box::before {
   content: '';
   position: absolute;
   inset: -10px 30px;
-  background: linear-gradient(315deg, var(--pink), var(--red), var(--pink));
+  background: linear-gradient(315deg, var(--white), var(--water-green), var(--white));
   transition: .5s;
   animation: animate 4s linear infinite;
 }
@@ -606,7 +598,7 @@ export default {
   content: '';
   position: absolute;
   inset: 5px;
-  background-color: var(--blue-dark);
+  background-color: var(--black);
   border-radius: 50%;
   z-index: 1;
 }
@@ -615,7 +607,7 @@ export default {
   display: flex;
   position: absolute;
   inset: 18px;
-  border: 3px solid var(--pink);
+  border: 3px solid var(--black);
   z-index: 3;
   border-radius: 50%;
   color: var(--white);
@@ -646,7 +638,6 @@ export default {
   position: relative;
   font-size: .8rem;
   text-align: center;
-  color: var(--white);
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -691,9 +682,9 @@ export default {
 }
 
 .main__portfolio .main__portfolio-about .about .title {
-  font-size: 1.5rem;
+  font-size: var(--large);
   text-transform: uppercase;
-  color: var(--white);
+  color: var(--black);
   display: flex;
   align-items: center;
   justify-content: start;
@@ -702,13 +693,15 @@ export default {
 }
 
 .main__portfolio .main__portfolio-about .about .title .book {
-  color: var(--red);
+  color: var(--water-green);
 }
 
 .main__portfolio .main__portfolio-about .about .about__my {
-  font-size: 1.1rem;
+  font-size: var(--medium);
   font-weight: 500;
-  color: var(--white);
+  color: var(--black);
+  opacity: .7;
+
 }
 
 .main__portfolio .main__portfolio-about .about .about__my::first-letter {
@@ -716,9 +709,11 @@ export default {
 }
 
 .main__portfolio .main__portfolio-about .about .description {
-  color: var(--white-text);
+  color: var(--medium-brown-gray);
   word-wrap: break-word;
-  font-size: 1rem;
+  font-size: var(--small);
+  font-style: italic;
+  line-height: calc(var(--medium)*1.5);
   padding: 0;
 }
 
@@ -727,8 +722,10 @@ export default {
   display: grid;
   place-items: center;
   grid-gap: 1rem;
-  background-color: transparent;
-  padding: 3rem 0;
+  background: none;
+  height: 100%;
+  min-height: 800px;
+  background-color: var(--black);
 }
 
 .main__portfolio .main__portfolio-skills .skills {
@@ -738,10 +735,13 @@ export default {
   align-items: center;
   justify-content: space-between;
   gap: 5px;
+  font-size: var(--large);
+  padding: var(--extra-large);
+  background: none;
 }
 
 .main__portfolio .main__portfolio-skills .skills .box {
-  color: var(--red);
+  color: var(--water-green);
 }
 
 .main__portfolio .main__portfolio-skills .technology {
@@ -753,106 +753,40 @@ export default {
   min-height: 600px;
   grid-gap: 1em;
   grid-template-columns: repeat(3, 1fr);
-  padding: 0 1em;
   padding: 10px 0 0 0;
+  background-color: var(--black);
 }
 
 .main__portfolio .main__portfolio-skills .technology .container {
   position: relative;
   width: 100%;
-  max-width: 200px;
+  max-width: 220px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   padding: 30px 1px;
-  background-color: transparent;
   border-radius: 4px;
   cursor: pointer;
 }
 
-.main__portfolio .main__portfolio-skills .technology .sass::before {
-  content: "";
-  width: 80%;
-  height: 3px;
-  border-radius: 10px;
-  background: linear-gradient(350deg, transparent, var(--pink), var(--pink));
-  position: absolute;
-  bottom: 0;
-  left: 0;
-}
-
-.main__portfolio .main__portfolio-skills .technology .css::before {
-  content: "";
-  width: 80%;
-  height: 3px;
-  border-radius: 10px;
-  background: linear-gradient(350deg, transparent, var(--blue), var(--blue));
-  position: absolute;
-  bottom: 0;
-  left: 0;
-}
-
-.main__portfolio .main__portfolio-skills .technology .react::before {
-  content: "";
-  width: 80%;
-  height: 3px;
-  border-radius: 10px;
-  background: linear-gradient(350deg, transparent, var(--greenblue), var(--greenblue));
-  position: absolute;
-  bottom: 0;
-  left: 0;
-}
-
-.main__portfolio .main__portfolio-skills .technology .javascript::before {
-  content: "";
-  width: 80%;
-  height: 3px;
-  border-radius: 10px;
-  background: linear-gradient(350deg, transparent, var(--yellow), var(--yellow));
-  position: absolute;
-  bottom: 0;
-  left: 0;
-}
-
-.main__portfolio .main__portfolio-skills .technology .html::before {
-  content: "";
-  width: 80%;
-  height: 3px;
-  border-radius: 10px;
-  background: linear-gradient(350deg, transparent, var(--orange), var(--orange));
-  position: absolute;
-  bottom: 0;
-  left: 0;
-}
-
-.main__portfolio .main__portfolio-skills .technology .git::before {
-  content: "";
-  width: 80%;
-  height: 3px;
-  border-radius: 10px;
-  background: linear-gradient(350deg, transparent, var(--red), var(--red));
-  position: absolute;
-  bottom: 0;
-  left: 0;
-}
 
 .main__portfolio .main__portfolio-skills .technology .container .cardbox {
   position: relative;
-  width: 90%;
+  width: 100%;
+  max-width: 90%;
   border-radius: 10px;
   height: 200px;
-  background-color: var(--white);
   transition: .3s ease-in-out;
   margin: 10px;
-  padding: 10px 0;
+  padding: var(--small) 2px;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 5px 202px rgba(0, 0, 0, 0.5);
   align-items: center;
   justify-content: start;
 
 }
+
 
 .main__portfolio .main__portfolio-skills .technology .container .cardbox:hover {
   height: 350px;
@@ -860,20 +794,34 @@ export default {
 
 .main__portfolio .main__portfolio-skills .technology .container .cardbox .content {
   position: relative;
-  margin-top: 140px;
-  padding: 0 15px 30px 15px;
+  margin-top: 100px;
   text-align: center;
   color: #111;
   visibility: hidden;
   opacity: 0;
+  height: auto;
+  width: 100%;
   transition: .3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--tiny);
 }
 
 .main__portfolio .main__portfolio-skills .technology .container .cardbox .content .description {
-  font-size: .9rem;
-  padding: 10px;
+  font-size: var(--small);
+  font-weight: 600;
+  color: var(--medium-brown-gray);
+  line-height: calc(var(--small)*1.5);
+  padding: 0;
   width: 100%;
-  flex: 1;
+  text-align: center;
+  display: flex;
+  height: 100%;
+  padding: 0 var(--tiny);
+  font-style: italic;
+
 }
 
 .main__portfolio .main__portfolio-skills .technology .container .cardbox .content .name {
@@ -881,10 +829,25 @@ export default {
   font-weight: 700;
 }
 
+.main__portfolio .main__portfolio-skills .technology .sass .cardbox {
+  background: linear-gradient(360deg, var(--white), var(--white), palevioletred);
+}
+
 .main__portfolio .main__portfolio-skills .technology .sass .cardbox .content .name {
-  color: var(--pink);
+  color: palevioletred;
   text-shadow: 0 3px 3px var(--black);
   position: relative;
+}
+
+.main__portfolio .main__portfolio-skills .technology .sass .cardbox::before {
+  content: "";
+  width: 80%;
+  height: 3px;
+  border-radius: 10px;
+  background: linear-gradient(350deg, transparent, pink, palevioletred);
+  position: absolute;
+  bottom: -5px;
+  left: 0;
 }
 
 .main__portfolio .main__portfolio-skills .technology .sass .cardbox .content .name::before {
@@ -893,16 +856,31 @@ export default {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background-color: var(--pink);
+  background-color: palevioletred;
   content: '';
   left: 45%;
-  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 5px 0 var(--black);
+}
+
+.main__portfolio .main__portfolio-skills .technology .css .cardbox {
+  background: linear-gradient(360deg, var(--white), var(--white), cornflowerblue);
 }
 
 .main__portfolio .main__portfolio-skills .technology .css .cardbox .content .name {
-  color: var(--blue);
-  text-shadow: 0 3px 3px var(--white-text);
+  color: cornflowerblue;
+  text-shadow: 0 3px 3px var(--black);
   position: relative;
+}
+
+.main__portfolio .main__portfolio-skills .technology .css .cardbox::before {
+  content: "";
+  width: 80%;
+  height: 3px;
+  border-radius: 10px;
+  background: linear-gradient(350deg, transparent, blue, cornflowerblue);
+  position: absolute;
+  bottom: -5px;
+  left: 0;
 }
 
 .main__portfolio .main__portfolio-skills .technology .css .cardbox .content .name::before {
@@ -911,16 +889,31 @@ export default {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background-color: var(--blue);
+  background-color: cornflowerblue;
   content: '';
   left: 45%;
-  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 5px 0 var(--black);
+}
+
+.main__portfolio .main__portfolio-skills .technology .react .cardbox {
+  background: linear-gradient(360deg, var(--white), var(--white), cyan);
 }
 
 .main__portfolio .main__portfolio-skills .technology .react .cardbox .content .name {
-  color: var(--greenblue);
+  color: dodgerblue;
   text-shadow: 0 3px 3px var(--black);
   position: relative;
+}
+
+.main__portfolio .main__portfolio-skills .technology .react .cardbox::before {
+  content: "";
+  width: 80%;
+  height: 3px;
+  border-radius: 10px;
+  background: linear-gradient(350deg, transparent, skyblue, dodgerblue);
+  position: absolute;
+  bottom: -5px;
+  left: 0;
 }
 
 .main__portfolio .main__portfolio-skills .technology .react .cardbox .content .name::before {
@@ -929,16 +922,31 @@ export default {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background-color: var(--greenblue);
+  background-color: dodgerblue;
   content: '';
   left: 45%;
-  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 5px 0 var(--black);
+}
+
+.main__portfolio .main__portfolio-skills .technology .javascript .cardbox {
+  background: linear-gradient(360deg, var(--white), var(--white), yellow);
 }
 
 .main__portfolio .main__portfolio-skills .technology .javascript .cardbox .content .name {
-  color: var(--yellow);
+  color: yellow;
   text-shadow: 0 3px 3px var(--black);
   position: relative;
+}
+
+.main__portfolio .main__portfolio-skills .technology .javascript .cardbox::before {
+  content: "";
+  width: 80%;
+  height: 3px;
+  border-radius: 10px;
+  background: linear-gradient(350deg, transparent, yellow, orange);
+  position: absolute;
+  bottom: -5px;
+  left: 0;
 }
 
 .main__portfolio .main__portfolio-skills .technology .javascript .cardbox .content .name::before {
@@ -947,16 +955,31 @@ export default {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background-color: var(--yellow);
+  background-color: yellow;
   content: '';
   left: 45%;
-  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 5px 0 var(--black);
+}
+
+.main__portfolio .main__portfolio-skills .technology .html .cardbox {
+  background: linear-gradient(360deg, var(--white), var(--white), orangered);
 }
 
 .main__portfolio .main__portfolio-skills .technology .html .cardbox .content .name {
-  color: var(--orange);
+  color: orangered;
   text-shadow: 0 3px 3px var(--black);
   position: relative;
+}
+
+.main__portfolio .main__portfolio-skills .technology .html .cardbox::before {
+  content: "";
+  width: 80%;
+  height: 3px;
+  border-radius: 10px;
+  background: linear-gradient(350deg, transparent, red, orange);
+  position: absolute;
+  bottom: -5px;
+  left: 0;
 }
 
 .main__portfolio .main__portfolio-skills .technology .html .cardbox .content .name::before {
@@ -965,16 +988,31 @@ export default {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background-color: var(--orange);
+  background-color: orangered;
   content: '';
   left: 45%;
-  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 5px 0 var(--black);
+}
+
+.main__portfolio .main__portfolio-skills .technology .git .cardbox {
+  background: linear-gradient(360deg, var(--white), var(--white), red);
 }
 
 .main__portfolio .main__portfolio-skills .technology .git .cardbox .content .name {
-  color: var(--red);
-  text-shadow: 0 3px 3px var(--black);
+  color: red;
+  text-shadow: 0 3px 10px var(--black);
   position: relative;
+}
+
+.main__portfolio .main__portfolio-skills .technology .git .cardbox::before {
+  content: "";
+  width: 80%;
+  height: 3px;
+  border-radius: 10px;
+  background: linear-gradient(350deg, transparent, red, orangered);
+  position: absolute;
+  bottom: -5px;
+  left: 0;
 }
 
 .main__portfolio .main__portfolio-skills .technology .git .cardbox .content .name::before {
@@ -983,10 +1021,10 @@ export default {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background-color: var(--red);
+  background-color: red;
   content: '';
   left: 45%;
-  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 5px 0 var(--black);
 }
 
 .main__portfolio .main__portfolio-skills .technology .container .cardbox:hover .content {
@@ -1008,27 +1046,25 @@ export default {
   justify-content: center;
 }
 
-
-
 .main__portfolio .main__portfolio-skills .technology .container .cardbox .imgbx .logo {
   object-fit: cover;
   width: 90px;
   height: 90px;
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0);
-  transform:translateX(-1px);
-
+  transform: translateX(-1px);
 }
-
 
 .main__portfolio-laboratory {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction:column;
-  height:100%;
-  min-height:600px;
+  flex-direction: column;
+  padding: var(--extra-large);
+  height: 100%;
+  min-height: 800px;
   width: 100%;
 }
+
 .main__portfolio-laboratory .laboratory {
   text-transform: capitalize;
   color: var(--white);
@@ -1036,10 +1072,16 @@ export default {
   align-items: center;
   justify-content: space-between;
   gap: 5px;
+  padding: var(--extra-large);
 }
 
 .main__portfolio-laboratory .box {
-  color: var(--red);
+  color: var(--water-green);
+}
+
+.main__portfolio-laboratory .laboratory {
+  color: var(--black);
+  font-size: var(--large);
 }
 
 @media (max-width: 900px) {
@@ -1048,17 +1090,20 @@ export default {
     gap: 1rem;
     justify-content: space-around;
     align-items: center;
+    padding: var(--large);
+    margin: 0;
   }
 
   .main__portfolio .main__portfolio-specialty .background__image {
     width: 100%;
-    max-width: 400px;
+    max-width: 300px;
+    margin: 0;
   }
 
   .main__portfolio .main__portfolio-specialty .wrapper {
     place-items: center;
     grid-gap: 1rem;
-    padding: 0 0 1rem 0;
+    padding: 0 0 var(--medium) 0;
   }
 
   .main__portfolio .main__portfolio-specialty .wrapper .stack,
@@ -1069,7 +1114,7 @@ export default {
   }
 
   .main__portfolio .main__portfolio-specialty .wrapper .description {
-    padding: 0 2rem;
+    padding: 0 var(--large);
     text-align: center;
   }
 
@@ -1077,17 +1122,18 @@ export default {
     display: grid;
     place-items: center;
     grid-gap: 1.2rem;
+    padding: 0 0 var(--large);
   }
 
   .main__portfolio .main__portfolio-about .social {
     place-items: center;
-    padding: 1rem;
+    padding: var(--medium);
   }
 
   .main__portfolio .main__portfolio-about .about {
     place-items: center;
     width: 100%;
-    padding: 1em;
+    padding: var(--medium);
   }
 
   .main__portfolio .main__portfolio-about .about,
@@ -1100,21 +1146,25 @@ export default {
 
   .main__portfolio .main__portfolio-about .about,
   .description {
-    padding: 10px 2rem;
+    padding: var(--tiny) var(--large);
   }
 
   .main__portfolio .main__portfolio-about .about .title {
     justify-content: center;
-    gap: 10px;
+    gap: var(--tiny);
+  }
+
+  .main__portfolio .main__portfolio-skills {
+    padding: 0 0 var(--extra-large) 0;
   }
 
   .main__portfolio .main__portfolio-skills .technology {
     display: flex;
     flex-wrap: wrap;
-    padding: 2rem 1rem;
+    padding: var(--large) var(--medium);
     align-items: center;
     justify-content: center;
-    gap: 1rem;
+    gap: var(--medium);
     height: auto;
   }
 
@@ -1126,10 +1176,10 @@ export default {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    padding: 0 1em;
+    padding: 0 var(--medium);
     border-radius: 4px;
     min-height: 500px;
-    background-color:transparent;
+    background-color: transparent;
   }
 
   .main__portfolio .main__portfolio-skills .technology .container .cardbox:hover {
@@ -1145,15 +1195,13 @@ export default {
   .main__portfolio .main__portfolio-skills .technology .container .cardbox .content {
     position: relative;
     margin-top: 0px;
-    padding: 10px 5px;
+    padding: var(--tiny);
     text-align: center;
     color: #111;
     visibility: hidden;
     opacity: 0;
     transition: .3s ease-in-out;
     height: 100%;
-
-
   }
 
   .main__portfolio .main__portfolio-skills .technology .container .cardbox {
@@ -1164,16 +1212,72 @@ export default {
     background-color: var(--white);
     transition: .3s ease-in-out;
     margin: 30px 10px;
-    padding: 20px 15px;
+    padding: var(--medium) var(--small);
     display: flex;
     flex-direction: column;
     box-shadow: 0 5px 202px rgba(0, 0, 0, 0.5);
-
   }
 
   .main__portfolio .main__portfolio-skills .technology .container .cardbox .imgbx {
     left: 5px;
   }
 
+  .main__portfolio .main__portfolio-skills .technology .git .cardbox .content .name::before {
+    left: 50%;
+  }
+
+  .main__portfolio .main__portfolio-skills .technology .javascript .cardbox .content .description {
+
+    padding: 10px;
+
+  }
+
+  .main__portfolio .main__portfolio-skills .technology .container {
+
+    padding: 0;
+  }
+
+  .main__portfolio .main__portfolio-skills .technology .container .cardbox .content {
+    position: relative;
+    margin-bottom: 35px;
+    text-align: center;
+    color: #111;
+    visibility: hidden;
+    opacity: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    transition: .3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--tiny);
+  }
+
+  .main__portfolio .main__portfolio-skills .technology .container .cardbox {
+    position: relative;
+    width: 100%;
+    max-width: 250px;
+    height: 250px;
+    background-color: var(--white);
+    transition: .3s ease-in-out;
+    margin: 30px 10px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 5px 202px rgba(0, 0, 0, 0.5);
+  }
+
+  .main__portfolio .main__portfolio-skills .technology .container .cardbox .content .name::before {
+    position: absolute;
+    bottom: -6px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    content: '';
+    left: 50%;
+    box-shadow: 0 0 5px 0 var(--black);
+  }
 }
 </style>
