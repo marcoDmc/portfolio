@@ -35,8 +35,6 @@ mobile version:
 #
 ![](./src/assets/mobile-menu-active.png)
 #
-![](./src/assets/mobile-menu-open.png)
-#
 ![](./src/assets/mobile-repos.png)
 
 
