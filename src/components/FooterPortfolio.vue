@@ -66,7 +66,7 @@ export default {
 
 <style>
 .footer__portfolio {
-  width: 100%;
+  width: 100vw;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -75,7 +75,7 @@ export default {
   background-color: var(--faded-white);
   padding: var(--tiny) 0 0 0;
   flex:1;
-
+  overflow-x:hidden;
 }
 
 .footer__portfolio .contact {

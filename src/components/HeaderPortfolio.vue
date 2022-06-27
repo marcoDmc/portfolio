@@ -73,7 +73,7 @@ export default {
 
 <style>
 .header__portfolio {
-  width: 100%;
+  width: 100vw;
   padding: 1rem 2rem;
   display: flex;
   align-content: center;
@@ -82,6 +82,7 @@ export default {
   position: fixed;
   z-index: 4;
   margin-bottom: var(--large);
+  overflow-x:hidden;
 
 }
 

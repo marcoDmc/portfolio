@@ -297,12 +297,13 @@ export default {
 }
 
 .main__portfolio {
-  width: 100%;
+  width: 100vw;
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: var(--faded-white);
+  overflow-x:hidden;
 }
 
 .main__portfolio .main__portfolio-specialty {
