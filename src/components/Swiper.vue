@@ -5,11 +5,13 @@
         }" :breakpoints="swiperOptions.breakpoints" :navigation="true" :modules="modules" class="mySwiper">
         <swiper-slide v-for="repo in repositories" :key="repo.id">
 
-            <Card v-bind:name="repo.name" v-bind:url="repo.html_url" v-bind:description="repo.description ? repo.description : 'this repository has no description at the moment'" v-tilt/>
+            <Card v-bind:name="repo.name" v-bind:url="repo.html_url"
+                v-bind:description="repo.description ? repo.description : 'this repository has no description at the moment'"
+                v-tilt />
 
         </swiper-slide>
-      
-    
+
+
     </swiper>
 </template>
 <script>
@@ -35,6 +37,10 @@ export default {
             repositories: {},
             swiperOptions: {
                 breakpoints: {
+                    200: {
+                        slidesPerView: 1,
+                        spaceBetween: 30,
+                    },
                     320: {
                         slidesPerView: 1,
                         spaceBetween: 30,
@@ -53,7 +59,7 @@ export default {
                         slidesPerView: 2,
                         spaceBetween: 30
                     },
-                      900: {
+                    900: {
                         slidesPerView: 3,
                         spaceBetween: 30
                     }
@@ -66,22 +72,22 @@ export default {
         SwiperSlide,
         Card
     },
-    methods:{
+    methods: {
         handleSetResponseFormatJson: function () {
-      this.repositories = JSON.parse(xml.responseText);
-    },
-    handleGetProfileGithub: async function () {
-      xml.addEventListener("load", this.handleSetResponseFormatJson);
-      await xml.open("GET", "https://api.github.com/users/marcoDmc/repos");
-      xml.send();
-    }
+            this.repositories = JSON.parse(xml.responseText);
+        },
+        handleGetProfileGithub: async function () {
+            xml.addEventListener("load", this.handleSetResponseFormatJson);
+            await xml.open("GET", "https://api.github.com/users/marcoDmc/repos");
+            xml.send();
+        }
     },
     mounted: function () {
-    this.repositories = this.handleGetProfileGithub();
-    
+        this.repositories = this.handleGetProfileGithub();
 
 
-  },
+
+    },
     setup() {
         return {
             modules: [Pagination, Navigation],
@@ -91,39 +97,42 @@ export default {
 </script>
 
 <style>
-
-
 .swiper {
-  width: 100%;
- margin-top:100px ;
-flex:1;
-display:flex;
-background-color:var(--white-text);
-align-items:center;
-justify-content:space-around;
-margin-bottom: 10px;
+    width: 100%;
+    margin-top: 100px;
+    flex: 1;
+    display: flex;
+    background-color: var(--faded-white);
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 10px;
 }
 
 .swiper-slide {
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  background: #fff;
-  background:transparent;
-  height:100%;
-  width:100%;
-  display:flex;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  margin-right:10px;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  -webkit-align-items: center; 
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    background-color: var(--faded-white);
+    height: 100%;
+    width: 100%;
+    display: flex;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    margin-right: 10px;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+}
+
+@media(max-width:500px) {
+    .swiper-slide {
+        padding: var(--large);
+    }
 }
 </style>
