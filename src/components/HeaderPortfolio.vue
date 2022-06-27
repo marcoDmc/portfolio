@@ -73,7 +73,7 @@ export default {
 
 <style>
 .header__portfolio {
-  width: 100vw;
+  width: 100%;
   padding: 1rem 2rem;
   display: flex;
   align-content: center;
@@ -82,7 +82,7 @@ export default {
   position: fixed;
   z-index: 4;
   margin-bottom: var(--large);
-  overflow-x:hidden;
+  /* overflow-x:hidden; */
 
 }
 
@@ -157,7 +157,7 @@ export default {
 
 .header__portfolio .header__navigation-topics .header__navigation-wrapper .header__navigation-options:hover::before {
   content: "";
-  bottom: -10px;
+  top: -10px;
   width: 8px;
   border-radius: 50%;
   height: 8px;
@@ -403,6 +403,9 @@ export default {
 }
 
 @media (min-width: 768px) {
+  .header__portfolio{
+     position: fixed;
+  }
   .header__portfolio .header__navigation-topics-open {
     width: 100%;
     max-width: 500px;
@@ -452,5 +455,7 @@ export default {
     color: var(--medium-brown-gray);
     transition: .4s ease;
   }
+
 }
+
 </style>
