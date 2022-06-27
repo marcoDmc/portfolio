@@ -26,29 +26,27 @@ export default {
   margin: 0;
   box-sizing: border-box;
   scroll-behavior: smooth;
-
 }
 
-
+html {
+  scroll-behavior: smooth;
+}
 
 body {
-  font-family: sans-serif;
-  font-size: 1rem;
-  list-style: none;
-  font-family: "Titillium Web", sans-serif;
+  font-family: 'Raleway', sans-serif;
   overflow-x: hidden;
-  background-color: var(--blue-dark);
+  background-color:var(--black);
 }
 
 a {
   text-decoration: none;
+}
 
+li {
+  list-style: none;
 }
-li{
-  list-style:none;
-}
-.app{
-  padding:0;
-  height:100%;
+
+.app {
+  padding: 0;
 }
 </style>
