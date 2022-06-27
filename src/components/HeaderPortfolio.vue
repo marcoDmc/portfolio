@@ -82,7 +82,6 @@ export default {
   position: fixed;
   z-index: 4;
   margin-bottom: var(--large);
-  /* overflow-x:hidden; */
 
 }
 
@@ -157,7 +156,7 @@ export default {
 
 .header__portfolio .header__navigation-topics .header__navigation-wrapper .header__navigation-options:hover::before {
   content: "";
-  top: -10px;
+  bottom: -10px;
   width: 8px;
   border-radius: 50%;
   height: 8px;

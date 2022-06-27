@@ -129,10 +129,4 @@ export default {
     -ms-flex-align: center;
     -webkit-align-items: center;
 }
-
-@media(max-width:500px) {
-    .swiper-slide {
-        padding: var(--large);
-    }
-}
 </style>

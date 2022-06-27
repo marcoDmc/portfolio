@@ -34,7 +34,6 @@ html {
 
 body {
   font-family: 'Raleway', sans-serif;
-  /* overflow-x:hidden; */
   background-color:var(--black);
 }
 

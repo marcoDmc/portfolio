@@ -837,7 +837,6 @@ export default {
 .main__portfolio .main__portfolio-skills .technology .sass .cardbox .content .name {
   color: palevioletred;
   text-shadow: 0 3px 3px var(--black);
-  position: relative;
 }
 
 .main__portfolio .main__portfolio-skills .technology .sass .cardbox::before {
@@ -851,18 +850,6 @@ export default {
   left: 0;
 }
 
-.main__portfolio .main__portfolio-skills .technology .sass .cardbox .content .name::before {
-  position: absolute;
-  bottom: -6px;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: palevioletred;
-  content: '';
-  left: 45%;
-  box-shadow: 0 0 5px 0 var(--black);
-}
-
 .main__portfolio .main__portfolio-skills .technology .css .cardbox {
   background: linear-gradient(360deg, var(--white), var(--white), cornflowerblue);
 }
@@ -870,7 +857,6 @@ export default {
 .main__portfolio .main__portfolio-skills .technology .css .cardbox .content .name {
   color: cornflowerblue;
   text-shadow: 0 3px 3px var(--black);
-  position: relative;
 }
 
 .main__portfolio .main__portfolio-skills .technology .css .cardbox::before {
@@ -884,18 +870,6 @@ export default {
   left: 0;
 }
 
-.main__portfolio .main__portfolio-skills .technology .css .cardbox .content .name::before {
-  position: absolute;
-  bottom: -6px;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: cornflowerblue;
-  content: '';
-  left: 45%;
-  box-shadow: 0 0 5px 0 var(--black);
-}
-
 .main__portfolio .main__portfolio-skills .technology .react .cardbox {
   background: linear-gradient(360deg, var(--white), var(--white), cyan);
 }
@@ -903,7 +877,6 @@ export default {
 .main__portfolio .main__portfolio-skills .technology .react .cardbox .content .name {
   color: dodgerblue;
   text-shadow: 0 3px 3px var(--black);
-  position: relative;
 }
 
 .main__portfolio .main__portfolio-skills .technology .react .cardbox::before {
@@ -917,18 +890,6 @@ export default {
   left: 0;
 }
 
-.main__portfolio .main__portfolio-skills .technology .react .cardbox .content .name::before {
-  position: absolute;
-  bottom: -6px;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: dodgerblue;
-  content: '';
-  left: 45%;
-  box-shadow: 0 0 5px 0 var(--black);
-}
-
 .main__portfolio .main__portfolio-skills .technology .javascript .cardbox {
   background: linear-gradient(360deg, var(--white), var(--white), yellow);
 }
@@ -936,7 +897,6 @@ export default {
 .main__portfolio .main__portfolio-skills .technology .javascript .cardbox .content .name {
   color: yellow;
   text-shadow: 0 3px 3px var(--black);
-  position: relative;
 }
 
 .main__portfolio .main__portfolio-skills .technology .javascript .cardbox::before {
@@ -950,18 +910,6 @@ export default {
   left: 0;
 }
 
-.main__portfolio .main__portfolio-skills .technology .javascript .cardbox .content .name::before {
-  position: absolute;
-  bottom: -6px;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: yellow;
-  content: '';
-  left: 45%;
-  box-shadow: 0 0 5px 0 var(--black);
-}
-
 .main__portfolio .main__portfolio-skills .technology .html .cardbox {
   background: linear-gradient(360deg, var(--white), var(--white), orangered);
 }
@@ -969,7 +917,6 @@ export default {
 .main__portfolio .main__portfolio-skills .technology .html .cardbox .content .name {
   color: orangered;
   text-shadow: 0 3px 3px var(--black);
-  position: relative;
 }
 
 .main__portfolio .main__portfolio-skills .technology .html .cardbox::before {
@@ -983,18 +930,6 @@ export default {
   left: 0;
 }
 
-.main__portfolio .main__portfolio-skills .technology .html .cardbox .content .name::before {
-  position: absolute;
-  bottom: -6px;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: orangered;
-  content: '';
-  left: 45%;
-  box-shadow: 0 0 5px 0 var(--black);
-}
-
 .main__portfolio .main__portfolio-skills .technology .git .cardbox {
   background: linear-gradient(360deg, var(--white), var(--white), red);
 }
@@ -1002,7 +937,6 @@ export default {
 .main__portfolio .main__portfolio-skills .technology .git .cardbox .content .name {
   color: red;
   text-shadow: 0 3px 10px var(--black);
-  position: relative;
 }
 
 .main__portfolio .main__portfolio-skills .technology .git .cardbox::before {
@@ -1014,18 +948,6 @@ export default {
   position: absolute;
   bottom: -5px;
   left: 0;
-}
-
-.main__portfolio .main__portfolio-skills .technology .git .cardbox .content .name::before {
-  position: absolute;
-  bottom: -6px;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: red;
-  content: '';
-  left: 45%;
-  box-shadow: 0 0 5px 0 var(--black);
 }
 
 .main__portfolio .main__portfolio-skills .technology .container .cardbox:hover .content {
