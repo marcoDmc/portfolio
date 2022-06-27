@@ -3,28 +3,44 @@
     <span v-if="menuOpen" class="background-open"></span>
     <span v-else class="background"></span>
     <span class="wrapper">
-      <ChevronLeftIcon class="ChevronLeftIcon" />
+      <ChevronLeftIcon size="40" class="ChevronLeftIcon" />
       /
       <span class="logo">marco damasceno</span>
-      <ChevronRightIcon class="ChevronRightIcon" />
+      <ChevronRightIcon size="40" class="ChevronRightIcon" />
     </span>
     <nav v-if="menuOpen" class="header__navigation-topics-open">
       <span class="hamburguer__open" v-on:click="handleMenuOpen"></span>
       <ul class="header__navigation-wrapper-open">
-        <li class="header__navigation-options">sobre</li>
-        <li class="header__navigation-options">skills</li>
-        <li class="header__navigation-options">laboratório</li>
-        <li class="header__navigation-options">contato</li>
+        <li class="header__navigation-options" @click="handleCloseMenu">
+          <a href="#about">sobre</a>
+        </li>
+        <li class="header__navigation-options" @click="handleCloseMenu">
+          <a href="#skills">skills</a>
+        </li>
+        <li class="header__navigation-options" @click="handleCloseMenu">
+          <a href="#laboratory">laboratório</a>
+        </li>
+        <li class="header__navigation-options" @click="handleCloseMenu">
+          <a href="#contact">contato</a>
+        </li>
       </ul>
     </nav>
 
     <nav v-else class="header__navigation-topics">
       <span class="hamburguer" v-on:click="handleMenuOpen"></span>
       <ul class="header__navigation-wrapper">
-        <li class="header__navigation-options">sobre</li>
-        <li class="header__navigation-options">skills</li>
-        <li class="header__navigation-options">laboratório</li>
-        <li class="header__navigation-options">contato</li>
+        <li class="header__navigation-options">
+          <a href="#about">sobre</a>
+        </li>
+        <li class="header__navigation-options">
+          <a href="#skills">skills</a>
+        </li>
+        <li class="header__navigation-options">
+          <a href="#laboratory">laboratório</a>
+        </li>
+        <li class="header__navigation-options">
+          <a href="#contact">contato</a>
+        </li>
       </ul>
     </nav>
   </header>
@@ -42,6 +58,10 @@ export default {
   methods: {
     handleMenuOpen: function () {
       this.menuOpen = !this.menuOpen;
+    },
+
+    handleCloseMenu: function () {
+      this.menuOpen = false;
     }
   },
   components: {
@@ -58,12 +78,15 @@ export default {
   display: flex;
   align-content: center;
   justify-content: space-between;
-  background-color: var(--blue-dark);
+  background-color: var(--black);
+  position: fixed;
+  z-index: 4;
+  margin-bottom: var(--large);
 
 }
 
 .header__portfolio .background {
-  background-color: var(--grafit);
+  background-color: var(--black);
   opacity: 0.7;
   position: absolute;
   z-index: 1;
@@ -81,33 +104,23 @@ export default {
 .header__portfolio .wrapper {
   display: flex;
   align-items: center;
-  color: var(--white-text);
+  color: var(--water-green);
 }
 
-.header__portfolio .wrapper .ChevronLeftIcon {
-  color: var(--red);
-}
 
 .header__portfolio .wrapper .logo {
   color: var(--white);
-  font-size: 1.1rem;
+  font-size: var(--medium);
   font-weight: 400;
   white-space: nowrap;
 }
 
-.header__portfolio .wrapper .ChevronRightIcon {
-  color: var(--red);
-}
-
-.header__portfolio .header__logo-portfolio {
-  width: 70px;
-  height: 70px;
-  object-fit: cover;
-}
 
 .header__portfolio .header__navigation-topics {
   width: 100%;
   max-width: 500px;
+  display: flex;
+  align-items: center;
 }
 
 .header__portfolio .header__navigation-topics .header__navigation-wrapper {
@@ -120,8 +133,8 @@ export default {
 }
 
 .header__portfolio .header__navigation-topics .header__navigation-wrapper .header__navigation-options {
-  text-transform: capitalize;
-  color: var(--white-text);
+
+  color: var(--white);
   cursor: pointer;
   text-align: center;
   display: flex;
@@ -131,18 +144,28 @@ export default {
   position: relative;
 }
 
+.header__portfolio .header__navigation-topics .header__navigation-wrapper .header__navigation-options a {
+  color: var(--white);
+  font-weight: 400;
+  font-size: var(--medium);
+}
+
+.header__portfolio .header__navigation-topics .header__navigation-wrapper .header__navigation-options a {
+  color: var(--white);
+}
+
 .header__portfolio .header__navigation-topics .header__navigation-wrapper .header__navigation-options:hover::before {
   content: "";
   bottom: -10px;
   width: 8px;
   border-radius: 50%;
   height: 8px;
-  background-color: var(--red);
+  background-color: var(--water-green);
   position: absolute;
 }
 
-.header__portfolio .header__navigation-topics .header__navigation-wrapper .header__navigation-options:hover {
-  color: var(--white);
+.header__portfolio .header__navigation-topics .header__navigation-wrapper .header__navigation-options a:hover {
+  color: var(--medium-brown-gray);
   transition: 0.4s ease;
 }
 
@@ -155,7 +178,7 @@ export default {
 
   .header__portfolio .background-open {
     display: block;
-    background: linear-gradient(360deg, var(--black), var(--black), var(--white-text));
+    background: linear-gradient(360deg, var(--black), var(--black), var(--white));
     opacity: 0.7;
     position: absolute;
     z-index: 1;
@@ -176,7 +199,7 @@ export default {
 
 
   .header__portfolio .header__navigation-topics .hamburguer {
-    background: var(--white-text);
+    background: var(--water-green);
     width: 20px;
     border-radius: 5px;
     height: 3px;
@@ -189,21 +212,21 @@ export default {
   .header__portfolio .header__navigation-topics .hamburguer::after {
     width: 25px;
     height: 3px;
-    background-color: var(--red);
+    background-color: var(--water-green);
     position: absolute;
     top: -7px;
     content: "";
-    left:0;
+    left: 0;
     border-radius: 5px;
   }
 
   .header__portfolio .header__navigation-topics .hamburguer::before {
     width: 25px;
     height: 3px;
-    background-color: var(--red);
+    background-color: var(--white);
     position: absolute;
     bottom: -7px;
-    left:0;
+    left: 0;
     content: "";
     border-radius: 5px;
   }
@@ -218,11 +241,12 @@ export default {
     flex: 1;
     display: flex;
     flex-direction: row-reverse;
+
   }
 
 
   .header__portfolio .header__navigation-topics-open .header__navigation-wrapper-open {
-    border-left: 2px solid var(--red);
+    border-left: 2px solid var(--water-green);
     position: absolute;
     z-index: 2;
     top: 0;
@@ -242,18 +266,19 @@ export default {
     transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   }
 
-
   .header__navigation-wrapper-open li {
-    color: var(--white-text);
     border-radius: 10px;
     position: relative;
     width: 90%;
-    font-weight: 700;
     cursor: pointer;
-
   }
 
-  .header__navigation-wrapper-open li:hover {
+  .header__navigation-wrapper-open li a {
+    color: var(--medium-brown-gray);
+    font-weight: 400;
+  }
+
+  .header__navigation-wrapper-open li a:hover {
     color: var(--white);
   }
 
@@ -264,7 +289,7 @@ export default {
     bottom: -2px;
     position: absolute;
     left: 0;
-    background: linear-gradient(300deg, var(--red), var(--pink), var(--pink));
+    background: linear-gradient(300deg, var(--blue-green), var(--water-green), var(--white));
     animation: .3s ease .3s both animationLiBefore;
     transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   }
@@ -315,7 +340,7 @@ export default {
   .hamburguer__open {
     width: 30px;
     border-radius: 5px;
-    background-color: var(--red);
+    background-color: var(--white);
     height: 3px;
     position: relative;
     animation: 0.3s linear 0.3s both rotateMenuBefore;
@@ -328,7 +353,7 @@ export default {
     content: "";
     top: -10px;
     border-radius: 5px;
-    background-color: var(--white-text);
+    background-color: var(--water-green);
     height: 3px;
     position: absolute;
     animation: 0.3s linear 0.3s both rotateMenuAfter;
@@ -390,8 +415,7 @@ export default {
   }
 
   .header__portfolio .header__navigation-topics-open .header__navigation-wrapper-open .header__navigation-options {
-    text-transform: capitalize;
-    color: var(--white-text);
+    color: var(--white);
     cursor: pointer;
     text-align: center;
     display: flex;
@@ -399,6 +423,18 @@ export default {
     height: auto;
     padding: 0;
     position: relative;
+    align-items: center;
+  }
+
+  .header__portfolio .header__navigation-topics-open .header__navigation-wrapper-open .header__navigation-options a {
+    color: var(--white);
+    font-weight: 400;
+    font-size: var(--medium);
+  }
+
+  .header__portfolio .header__navigation-topics-open .header__navigation-wrapper-open .header__navigation-options a:hover {
+    color: var(--medium-brown-gray);
+    transition: 0.4s ease;
   }
 
   .header__portfolio .header__navigation-topics-open .header__navigation-wrapper-open .header__navigation-options:hover::before {
@@ -407,12 +443,12 @@ export default {
     width: 8px;
     border-radius: 50%;
     height: 8px;
-    background-color: var(--red);
+    background-color: var(--water-green);
     position: absolute;
   }
 
   .header__portfolio .header__navigation-topics-open .header__navigation-wrapper-open .header__navigation-options:hover {
-    color: var(--white);
+    color: var(--medium-brown-gray);
     transition: .4s ease;
   }
 }

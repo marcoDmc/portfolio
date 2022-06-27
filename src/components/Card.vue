@@ -1,6 +1,6 @@
 <template>
   <a :href="url" class="card" target="_blank" v-motion-pop-visible>
-  <span class="overlay"></span>
+    <span class="overlay"></span>
     <img src="../assets/github.svg" alt="photo project" class="photo__card" />
     <strong class="title">{{ name }}</strong>
     <p class="description">
@@ -26,50 +26,52 @@ export default {
   max-width: 200px;
   height: 100%;
   min-height: 250px;
-  background-color:var(--white);
+  background-color: var(--white);
   border-radius: 6px;
-  padding: 10px 1rem;
+  padding: var(--tiny) var(--medium);
   display: grid;
   place-items: center;
   grid-gap: 5px;
   position: relative;
-  box-shadow:20px 20px 50px rgba(0,0,0,0.5);
-  backdrop-filter:blur(5px);
-  position:relative;
+  box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  position: relative;
 }
 
 .card::after {
-  position:absolute;
-  z-index:1;
-  content:'';
-  width: 2.5em;
-  height:1.2em;
-  border-radius:  10px 8px 0 0 ;
-  background-color:var(--white);
-  top:-1px;
-  right:0;
+  position: absolute;
+  z-index: 1;
+  content: '';
+  width: 3em;
+  height: 1.5em;
+  border-radius: 10px 8px 0 0;
+  background-color: var(--white);
+  top: 0;
+  right: 0;
 }
-.card::before{
-  position:absolute;
-  z-index:1;
-  content:'';
-  width: 2.5em;
-  height:1.2em;
-  border-radius: 8px 10px 0 0 ;
-  background-color:var(--white);
-  top:-1px;
-  left:0;
+
+.card::before {
+  position: absolute;
+  z-index: 1;
+  content: '';
+  width: 3em;
+  height: 1.5em;
+  border-radius: 8px 10px 0 0;
+  background-color: var(--white);
+  top: 0;
+  left: 0;
 }
-.card .overlay{
+
+.card .overlay {
   content: "";
   position: absolute;
-  top:-1px;
-  border-radius: 8px 8px 0 0 ;
-  width: 200px;
+  top: -1px;
+  border-radius: 8px 8px 0 0;
+  width: 100%;
   height: 20px;
-  background:linear-gradient(to left , transparent
-  ,var(--black),transparent);
+  background: linear-gradient(to left, transparent, var(--black), transparent);
 }
+
 .card .photo__card {
   object-fit: cover;
   width: 100px;
@@ -85,12 +87,27 @@ export default {
 }
 
 .card .description {
-  color: var(--white-text);
+  color: var(--medium-brown-gray);
   word-wrap: break-word;
   width: 100%;
   text-align: center;
   font-weight: 400;
-  padding: 0 0 10px 0;
-  font-size: 0.9rem;
+  padding: 0 0 var(--tiny) 0;
+  font-size: var(--small);
+  line-height: calc(var(--small)*1.5);
+  font-style: italic;
+}
+
+@media(max-width:500px) {
+  .card {
+    margin: 0 var(--extra-large);
+  }
+}
+
+@media(max-width:900px) {
+  .card {
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+
+  }
 }
 </style>

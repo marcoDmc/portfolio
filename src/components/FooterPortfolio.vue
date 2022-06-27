@@ -1,5 +1,5 @@
 <template>
-  <footer class="footer__portfolio">
+  <footer class="footer__portfolio" id="contact">
     <h4 class="contact">
       <BoxIcon class="box" />
       contato
@@ -14,11 +14,7 @@
       </span>
 
       <span class="github">
-        <a
-          href="https://github.com/marcosDmc"
-          target="_blank"
-          class="github__url"
-        >
+        <a href="https://github.com/marcosDmc" target="_blank" class="github__url">
           github.com/marcosDmc
         </a>
         <BrandGithubIcon size="30" class="icon__github" />
@@ -28,12 +24,7 @@
         <p class="number__phone">(21)98140-8559</p>
       </span>
       <span class="linkedin">
-        <a
-          href="https://www.linkedin.com/in/marcodmc/"
-          class="linkedin__url"
-          target="_blank"
-          >linkedin/in/marcodmc</a
-        >
+        <a href="https://www.linkedin.com/in/marcodmc/" class="linkedin__url" target="_blank">linkedin/in/marcodmc</a>
         <BrandLinkedinIcon size="30" class="icon__linkedin" />
       </span>
     </span>
@@ -74,7 +65,6 @@ export default {
 </script>
 
 <style>
-
 .footer__portfolio {
   width: 100%;
   display: flex;
@@ -82,32 +72,34 @@ export default {
   justify-content: center;
   gap: 2rem;
   flex-direction: column;
-  background-color: var(--black);
-  padding:10px 0;
-  height:100%;
- 
+  background-color: var(--faded-white);
+  padding: var(--tiny) 0 0 0;
+  flex:1;
+
 }
 
 .footer__portfolio .contact {
   text-transform: capitalize;
-  color: var(--white);
+  color: var(--black);
+  font-size: var(--large);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 1rem;
   gap: 5px;
 }
 
 .footer__portfolio .contact .box {
-  color: var(--red);
+  color: var(--water-green);
 }
 
 .footer__portfolio .pharse {
   text-align: center;
   word-wrap: break-word;
-  padding: 0 1rem;
-  color: var(--white);
+  padding: 0 var(--small);
+  color: var(--medium-brown-gray);
   width: 80%;
+  font-style:italic;
+  font-size:var(--small);
 }
 
 .footer__portfolio .pharse::first-letter {
@@ -137,7 +129,7 @@ export default {
 .footer__portfolio .network .github .github__url:hover,
 .linkedin .linkedin__url:hover {
   transition: 0.4 ease;
-  color: var(--white);
+  color: var(--black);
 }
 
 .footer__portfolio .network .github,
@@ -149,14 +141,15 @@ export default {
 .email .icon__email,
 .github .icon__github,
 .linkedin .icon__linkedin {
-  color: var(--white-text);
+  color: var(--medium-brown-gray);
 }
+
 .footer__portfolio .network .tel .icon__tel:hover,
 .email .icon__email:hover,
 .github .icon__github:hover,
-.linkedin .icon__linkedin:hover{
-  color:var(--white);
-  transition:.4s ease;
+.linkedin .icon__linkedin:hover {
+  color: var(--black);
+  transition: .4s ease;
 }
 
 .footer__portfolio .network .tel,
@@ -164,26 +157,31 @@ export default {
 .github,
 .linkedin,
 a {
-  color: var(--white-text);
+  color: var(--medium-brown-gray);
   font-weight: 700;
+  font-size:var(--small);
 }
 
 .footer__portfolio .foot {
   width: 100%;
-  background-color: var(--blue-dark);
+  background-color: var(--black);
   padding: 2rem;
   text-align: center;
-  color: var(--white-text);
-  border-bottom: 3px solid var(--red);
+  color: var(--white);
+  border-bottom: 3px solid var(--water-green);
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1rem;
-  height:100%;
-  min-height:100px;
+  font-size: var(--small);
+  height: 100%;
+  min-height: 100px;
+
 }
 
 @media (max-width: 900px) {
+  .footer__portfolio{
+    padding: var(--extra-large) 0 0 0;
+  }
   .footer__portfolio .network {
     grid-template-columns: 1fr;
   }
