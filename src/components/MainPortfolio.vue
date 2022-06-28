@@ -8,28 +8,27 @@
           Olá , prazer em conhecê-lo (a), veja alguns dos meus projetos logo
           abaixo.
         </p>
-<a v-bind:href="ancor"  download="true" v-bind:class="active"
-          v-on:click="handleAnimationButtonDownload($event)">
-        <!-- <a v-bind:href="ancor" download="curriculo" v-bind:class="active"
-          v-on:click="handleAnimationButtonDownload($event)"> -->
+
+        <a :href="file" download v-bind:class="active" v-on:click="handleAnimationButtonDownload($event)">
+
           <span class="text">
             <CheckIcon v-if="completed === 'completo'" size="20" class="check" />
             <ArrowDownIcon v-else size="20" class="arrow" v-motion :initial="{
               y: 4,
             }" :enter="{
-                y: 0,
-                transition: {
-                  repeat: Infinity,
-                  repeatType: 'loop',
-                  repeatDelay: 800,
-                  mass: 0.8
-                },
-              }" />
+  y: 0,
+  transition: {
+    repeat: Infinity,
+    repeatType: 'loop',
+    repeatDelay: 800,
+    mass: 0.8
+  },
+}" />
             {{ completed }}
           </span>
-        <!-- </a> -->
+
         </a>
-        
+
 
       </span>
       <img src="../assets/undraw_vue.svg" alt="Computador imagem" class="background__image" />
@@ -226,30 +225,21 @@ export default {
       profile: {},
       active: "document",
       completed: "baixar curriculo",
-      ancor: ""
+      file:  "/public/files/Profile.pdf"
     };
   },
   methods: {
     handleSetResponseFormatJson: function () {
       this.profile = JSON.parse(xml.responseText);
-
     },
     handleGetProfileGithub: async function () {
       xml.addEventListener("load", this.handleSetResponseFormatJson);
       await xml.open("GET", "https://api.github.com/users/marcoDmc");
       xml.send();
     },
-    handleDownload: function (event) {
-      event.preventDefault();
-      setTimeout(() => {
-        this.ancor = "../../public/Profile.pdf"
-      }, 10000)
+    handleAnimationButtonDownload: function () {
 
-    },
-    handleAnimationButtonDownload: function (event) {
       this.active = "document-active";
-
-      this.handleDownload(event)
 
       setTimeout(() => {
         this.active = "document";
@@ -259,14 +249,10 @@ export default {
       setTimeout(() => {
         this.completed = "baixar curriculo";
       }, 8000);
-
-
     }
   },
   mounted: function () {
     this.profile = this.handleGetProfileGithub();
-
-
   },
   components: {
     BrandGithubIcon,
@@ -306,7 +292,7 @@ export default {
   flex-direction: column;
   align-items: center;
   background-color: var(--faded-white);
-  overflow-x:hidden;
+  overflow-x: hidden;
 }
 
 .main__portfolio .main__portfolio-specialty {

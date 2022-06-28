@@ -7,7 +7,7 @@
 
             <Card v-bind:name="repo.name" v-bind:url="repo.html_url"
                 v-bind:description="repo.description ? repo.description : 'this repository has no description at the moment'"
-                v-tilt />
+                 />
 
         </swiper-slide>
 

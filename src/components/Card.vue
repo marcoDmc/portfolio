@@ -1,11 +1,12 @@
 <template>
-  <a :href="url" class="card" target="_blank" v-motion-pop-visible>
+  <a  :href="url" class="card" target="_blank" v-motion-pop-visible v-tilt>
     <span class="overlay"></span>
     <img src="../assets/github.svg" alt="photo project" class="photo__card" />
     <strong class="title">{{ name }}</strong>
     <p class="description">
       {{ description }}
     </p>
+
   </a>
 </template>
 
@@ -33,7 +34,7 @@ export default {
   place-items: center;
   grid-gap: 5px;
   position: relative;
-  box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(5px);
   position: relative;
 }
