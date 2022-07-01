@@ -4,9 +4,14 @@
       <BoxIcon class="box" />
       contato
     </h4>
+
+    
     <p class="pharse">
       fique a vontade para entrar em contato. será um prazer atende-lo (a).
     </p>
+
+
+   
     <span class="network">
       <span class="email">
         <BrandGmailIcon size="30" class="icon__email" />
@@ -14,8 +19,8 @@
       </span>
 
       <span class="github">
-        <a href="https://github.com/marcosDmc" target="_blank" class="github__url">
-          github.com/marcosDmc
+        <a href="https://github.com/marcoDmc" target="_blank" class="github__url">
+          github.com/marcoDmc
         </a>
         <BrandGithubIcon size="30" class="icon__github" />
       </span>
@@ -28,6 +33,29 @@
         <BrandLinkedinIcon size="30" class="icon__linkedin" />
       </span>
     </span>
+
+
+    
+    <form action="send email" method="post" class="contact__form">
+      <div>
+        <label for="name">Nome:</label>
+        <input type="text" v-model="name" id="name" class="contact__form-name"  />
+      </div>
+      <div>
+        <label for="email">E-mail:</label>
+        <input type="email" v-model="email" id="email" class="contact__form-email"  />
+      </div>
+      <div>
+        <label for="msg">Mensagem:</label>
+        <textarea v-model="message" id="msg" class="contact__form-msg"></textarea>
+      </div>
+      <div class="form__contact-wrapper-button">
+        <button type="submit" id="btn" class="contact__form-btn" v-bind:disabled="isDisabled" @click="handleSubmit">Enviar sua
+          mensagem</button>
+      </div>
+    </form>
+
+   
     <div class="foot" v-show="year">&copy; {{ year }} marco damasceno</div>
   </footer>
 </template>
@@ -40,19 +68,66 @@ import {
   BrandGmailIcon,
   BoxIcon,
 } from "vue-tabler-icons";
-
+let validEmail =  /^[a-zA-Z0-9.!#$%'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zAZ0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
 export default {
   name: "FOOTER",
-  data: () => ({
-    year: "",
-  }),
+
+  data() {
+    return {
+      isDisabled: true,
+      year: "",
+      name: "",
+      email: "",
+      message: "",
+     
+
+    }
+  },
+  watch: {
+    name: "handleDisabledButton",
+    email: "handleDisabledButton",
+    message: "handleDisabledButton"
+  },
   methods: {
     handleGetFullYear: function () {
       return new Date().getFullYear();
     },
+    handleDisabledButton: function () {
+      if (!this.name || !this.email || !this.message) {
+        this.isDisabled = true
+        
+      } else {
+        this.isDisabled = false
+        this.isValid = true
+      }
+
+   },
+    handleValidatedFields: function () {
+      
+    if(this.name.length < 5){
+      this.name = "";
+      return
+    }
+     if (validEmail.exec(this.email)){
+      return
+    }else{
+      this.email = ""
+    }
+
+   if(this.message.length < 15){
+      this.message = ""
+      return
+    }
+   },
+   handleSubmit:function(e){
+    e.preventDefault();
+    this.handleValidatedFields();
+   }
+
   },
   mounted: function () {
-    this.year = this.handleGetFullYear();
+    this.year = this.handleGetFullYear()
+
   },
   components: {
     BrandLinkedinIcon,
@@ -66,26 +141,25 @@ export default {
 
 <style>
 .footer__portfolio {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
-  flex-direction: column;
-  background-color: var(--faded-white);
-  padding: var(--tiny) 0 0 0;
-  flex:1;
-  overflow-x:hidden;
+  display: grid;
+  height: 100%;
+  min-height: 600px;
+  grid-template-areas: "contato contato"
+    "frase frase"
+    "network form"
+    "footer footer";
 }
 
 .footer__portfolio .contact {
   text-transform: capitalize;
-  color: var(--black);
+  color: var(--white);
   font-size: var(--large);
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 5px;
+  padding: var(--medium) 0;
+  grid-area: contato;
 }
 
 .footer__portfolio .contact .box {
@@ -95,11 +169,16 @@ export default {
 .footer__portfolio .pharse {
   text-align: center;
   word-wrap: break-word;
-  padding: 0 var(--small);
+  padding: var(--medium) 0;
   color: var(--medium-brown-gray);
-  width: 80%;
-  font-style:italic;
-  font-size:var(--small);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-style: italic;
+  font-size: var(--small);
+  margin-bottom: var(--tiny);
+  grid-area: frase;
 }
 
 .footer__portfolio .pharse::first-letter {
@@ -108,11 +187,12 @@ export default {
 
 .footer__portfolio .network {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   grid-gap: 1rem;
   padding: 2rem 0;
   width: 100%;
   place-items: center;
+  grid-area: network;
 }
 
 .footer__portfolio .network .tel,
@@ -129,12 +209,12 @@ export default {
 .footer__portfolio .network .github .github__url:hover,
 .linkedin .linkedin__url:hover {
   transition: 0.4 ease;
-  color: var(--black);
+  color: var(--white);
 }
 
 .footer__portfolio .network .github,
 .linkedin {
-  justify-content: end;
+  justify-content: start;
 }
 
 .footer__portfolio .network .tel .icon__tel,
@@ -148,7 +228,7 @@ export default {
 .email .icon__email:hover,
 .github .icon__github:hover,
 .linkedin .icon__linkedin:hover {
-  color: var(--black);
+    color: var(--white);
   transition: .4s ease;
 }
 
@@ -159,11 +239,12 @@ export default {
 a {
   color: var(--medium-brown-gray);
   font-weight: 700;
-  font-size:var(--small);
+  font-size: var(--small);
 }
 
 .footer__portfolio .foot {
   width: 100%;
+  position: relative;
   background-color: var(--black);
   padding: 2rem;
   text-align: center;
@@ -175,16 +256,111 @@ a {
   font-size: var(--small);
   height: 100%;
   min-height: 100px;
+  grid-area: footer;
 
 }
 
+.footer__portfolio .foot::after {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(360deg, transparent, var(--water-green), transparent);
+  content: '';
+}
+
+
+.contact__form {
+
+  width: 100%;
+  max-width: 375px;
+  height: 100%;
+  min-height: 380px;
+  background-color: var(--white);
+  box-shadow: 0 0 10px 10px rgba(100, 100, 100, 0.25);
+  border-radius: 7px;
+  grid-gap: var(--tiny);
+  padding: var(--medium) var(--small);
+  display: grid;
+  place-items: center;
+  margin: 0 auto;
+  grid-area: form;
+}
+
+.contact__form div {
+  display: grid;
+  width: 100%;
+  place-items: left;
+  grid-gap: var(--tiny);
+}
+
+.contact__form div label {
+  color: var(--black);
+  font-size: var(--small);
+  font-weight: 500;
+}
+
+.contact__form div~input[type="text"],
+input {
+  padding: var(--tiny);
+  border: 1px solid;
+  background: transparent;
+  border-color: var(--medium-brown-gray);
+  border-radius: 5px;
+  outline: none;
+}
+
+.contact__form div textarea {
+  height: 100%;
+  min-height: 200px;
+  resize:none;
+  outline:none;
+  border-color:var(--medium-brown-gray);
+  border:1px solid;
+ padding:var(--tiny);
+ font-size:var(--small);
+ font-weight:600;
+ font-style:italic;
+}
+
+.contact__form button {
+  border-color: var(--blue-green);
+  outline: none;
+  background-color: var(--water-green);
+  color: var(--black);
+  font-size: var(--small);
+  font-weight: 500;
+  padding: var(--tiny);
+  border-radius: 7px;
+  width: 80%;
+  cursor: pointer;
+  margin: 0 auto;
+}
+
+.contact__form button:hover {
+  opacity: .7;
+  transition: all .4s;
+}
+
+.contact__form button:disabled {
+  background-color: var(--medium-brown-gray);
+  pointer-events: none;
+  opacity: .5;
+  color: var(--black);
+  border-color: var(--medium-brown-gray);
+  transition: all .4s;
+}
+
 @media (max-width: 900px) {
-  .footer__portfolio{
+  .footer__portfolio {
     padding: var(--extra-large) 0 0 0;
+    grid-template-areas: "contato contato"
+      "frase frase"
+      "network network"
+      "form form"
+      "footer footer";
   }
-  .footer__portfolio .network {
-    grid-template-columns: 1fr;
-  }
+
 
   .footer__portfolio .network .tel {
     justify-content: center;
@@ -196,6 +372,10 @@ a {
   .tel {
     align-items: center;
     justify-content: center;
+  }
+
+  .contact__form{
+    max-width:330px;
   }
 }
 </style>
