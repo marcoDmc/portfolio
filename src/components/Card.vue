@@ -1,5 +1,5 @@
 <template>
-  <a  :href="url" class="card" target="_blank" v-motion-pop-visible v-tilt>
+  <a  :href="url" class="card" target="_blank" v-motion-pop-visible >
     <span class="overlay"></span>
     <img src="../assets/github.svg" alt="photo project" class="photo__card" />
     <strong class="title">{{ name }}</strong>
