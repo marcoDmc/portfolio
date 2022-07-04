@@ -28,7 +28,7 @@ import "swiper/css/navigation";
 import { Pagination, Navigation } from "swiper";
 
 import Card from "./Card.vue";
-let xml = new XMLHttpRequest();
+let ajax = new XMLHttpRequest();
 
 export default {
     name: 'SWIPER',
@@ -74,12 +74,12 @@ export default {
     },
     methods: {
         handleSetResponseFormatJson: function () {
-            this.repositories = JSON.parse(xml.responseText);
+            this.repositories = JSON.parse(ajax.responseText);
         },
         handleGetProfileGithub: async function () {
-            xml.addEventListener("load", this.handleSetResponseFormatJson);
-            await xml.open("GET", "https://api.github.com/users/marcoDmc/repos");
-            xml.send();
+            ajax.addEventListener("load", this.handleSetResponseFormatJson);
+            await ajax.open("GET", "https://api.github.com/users/marcoDmc/repos");
+            ajax.send();
         }
     },
     mounted: function () {

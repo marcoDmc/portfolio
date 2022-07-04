@@ -9,21 +9,21 @@
           abaixo.
         </p>
 
-        <a :href="file" download v-bind:class="active" v-on:click="handleAnimationButtonDownload($event)">
+        <a v-bind:href="pdf" target="_blank" v-bind:class="active" @click="handleAnimationButtonDownload($event)">
 
           <span class="text">
             <CheckIcon v-if="completed === 'completo'" size="20" class="check" />
             <ArrowDownIcon v-else size="20" class="arrow" v-motion :initial="{
               y: 4,
             }" :enter="{
-  y: 0,
-  transition: {
-    repeat: Infinity,
-    repeatType: 'loop',
-    repeatDelay: 800,
-    mass: 0.8
-  },
-}" />
+                      y: 0,
+                      transition: {
+                        repeat: Infinity,
+                        repeatType: 'loop',
+                        repeatDelay: 800,
+                        mass: 0.8
+                      },
+                    }" />
             {{ completed }}
           </span>
 
@@ -175,7 +175,7 @@
             <div class="content">
 
               <strong class="name">css</strong>
-              <p class="description">
+              <p class="description" >
                 Trata-se de uma linguagem de marcação, amplamente utilizada com HTML ou XHTML, e representa diversas
                 possibilidades para a formatação.
               </p>
@@ -195,6 +195,7 @@
       <Swiper />
     </section>
   </main>
+  
 </template>
 
 <script>
@@ -209,11 +210,10 @@ import {
 } from "vue-tabler-icons";
 import Swiper from "./Swiper.vue";
 
+let ajax = new XMLHttpRequest();
 
-let xml = new XMLHttpRequest();
 export default {
   name: "MAIN",
-  el: ".document",
   props: {
     name: String,
     description: String,
@@ -225,17 +225,17 @@ export default {
       profile: {},
       active: "document",
       completed: "baixar curriculo",
-      file:  "/public/files/Profile.pdf"
+      pdf: "https://app232backend.herokuapp.com/pdf"
     };
   },
   methods: {
     handleSetResponseFormatJson: function () {
-      this.profile = JSON.parse(xml.responseText);
+      this.profile = JSON.parse(ajax.responseText);
     },
     handleGetProfileGithub: async function () {
-      xml.addEventListener("load", this.handleSetResponseFormatJson);
-      await xml.open("GET", "https://api.github.com/users/marcoDmc");
-      xml.send();
+      ajax.addEventListener("load", this.handleSetResponseFormatJson);
+      await ajax.open("GET", "https://api.github.com/users/marcoDmc");
+      ajax.send();
     },
     handleAnimationButtonDownload: function () {
 
@@ -249,7 +249,11 @@ export default {
       setTimeout(() => {
         this.completed = "baixar curriculo";
       }, 8000);
-    }
+
+      
+    },
+    
+    
   },
   mounted: function () {
     this.profile = this.handleGetProfileGithub();
@@ -434,6 +438,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-around;
+  color:var(--white);
 
 }
 
