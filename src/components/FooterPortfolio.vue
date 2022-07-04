@@ -4,14 +4,11 @@
       <BoxIcon class="box" />
       contato
     </h4>
-
-    
+ 
     <p class="pharse">
       fique a vontade para entrar em contato. será um prazer atende-lo (a).
     </p>
 
-
-   
     <span class="network">
       <span class="email">
         <BrandGmailIcon size="30" class="icon__email" />
@@ -42,10 +39,6 @@
         <input type="text" v-model="name" id="name" class="contact__form-name"  />
       </div>
       <div>
-        <label for="email">E-mail:</label>
-        <input type="email" v-model="email" id="email" class="contact__form-email"  />
-      </div>
-      <div>
         <label for="msg">Mensagem:</label>
         <textarea v-model="message" id="msg" class="contact__form-msg"></textarea>
       </div>
@@ -55,7 +48,6 @@
       </div>
     </form>
 
-   
     <div class="foot" v-show="year">&copy; {{ year }} marco damasceno</div>
   </footer>
 </template>
@@ -68,24 +60,23 @@ import {
   BrandGmailIcon,
   BoxIcon,
 } from "vue-tabler-icons";
-let validEmail =  /^[a-zA-Z0-9.!#$%'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zAZ0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
+
+
+const ajax = new XMLHttpRequest();
+
 export default {
   name: "FOOTER",
-
   data() {
     return {
       isDisabled: true,
       year: "",
       name: "",
-      email: "",
       message: "",
-     
-
+      url:"https://app232backend.herokuapp.com/"
     }
   },
   watch: {
     name: "handleDisabledButton",
-    email: "handleDisabledButton",
     message: "handleDisabledButton"
   },
   methods: {
@@ -93,14 +84,12 @@ export default {
       return new Date().getFullYear();
     },
     handleDisabledButton: function () {
-      if (!this.name || !this.email || !this.message) {
-        this.isDisabled = true
-        
+      if (!this.name || !this.message) {
+        this.isDisabled = true    
       } else {
         this.isDisabled = false
         this.isValid = true
       }
-
    },
     handleValidatedFields: function () {
       
@@ -108,26 +97,37 @@ export default {
       this.name = "";
       return
     }
-     if (validEmail.exec(this.email)){
-      return
-    }else{
-      this.email = ""
-    }
 
-   if(this.message.length < 15){
+   if(this.message.length < 5){
       this.message = ""
       return
     }
    },
-   handleSubmit:function(e){
+   handleSubmit: async function(e){
     e.preventDefault();
     this.handleValidatedFields();
-   }
+
+    const data = {
+      name: this.name,
+      message: this.message
+    }
+    await ajax.open("POST",this.url,true)
+
+    ajax.setRequestHeader("content-type","application/json")
+
+    ajax.send(JSON.stringify(data))
+
+    ajax.onload = () =>  ajax.status == 200 ? alert("mensagem enviada com sucesso !") : alert("sem sucesso. a algo de errado aqui!")
+
+    setTimeout(() => {
+      this.name = ""
+      this.message = ""
+    },6000)
+   },
 
   },
   mounted: function () {
     this.year = this.handleGetFullYear()
-
   },
   components: {
     BrandLinkedinIcon,
@@ -257,7 +257,7 @@ a {
   height: 100%;
   min-height: 100px;
   grid-area: footer;
-
+  margin-top:var(--medium);
 }
 
 .footer__portfolio .foot::after {
@@ -269,9 +269,7 @@ a {
   content: '';
 }
 
-
 .contact__form {
-
   width: 100%;
   max-width: 375px;
   height: 100%;
@@ -360,7 +358,6 @@ input {
       "form form"
       "footer footer";
   }
-
 
   .footer__portfolio .network .tel {
     justify-content: center;
