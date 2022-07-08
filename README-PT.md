@@ -37,7 +37,7 @@ versão mobile:
 #
 ![](./src/assets/form.png)
 
-
+> inspiração de design [*lavinia melo*](https://dribbble.com/laviniamelo)
 
 
 [English README](./README.md)
