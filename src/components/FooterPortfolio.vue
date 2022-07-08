@@ -189,18 +189,18 @@ export default {
 
       ajax.send(JSON.stringify(data))
 
-      setTimeout(() => {
-        ajax.onload = () => {
 
-          if (ajax.status == 200) {
-            this.isSucess = true
-            this.msgAlert = "mensagem enviada com sucesso!"
-          } else {
-            this.isSucess = false
-            this.msgAlert = "mensagem não enviada!"
-          }
+      ajax.onload = () => {
+
+        if (ajax.status == 200) {
+          this.isSucess = true
+          this.msgAlert = "mensagem enviada com sucesso!"
+        } else {
+          this.isSucess = false
+          this.msgAlert = "mensagem não enviada!"
         }
-      }, 500)
+      }
+
 
       setTimeout(() => {
         this.name = ""
