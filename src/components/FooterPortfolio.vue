@@ -4,7 +4,7 @@
       <BoxIcon class="box" />
       contato
     </h4>
- 
+
     <p class="pharse">
       fique a vontade para entrar em contato. será um prazer atende-lo (a).
     </p>
@@ -32,21 +32,88 @@
     </span>
 
 
-    
+
     <form action="send email" method="post" class="contact__form">
       <div>
         <label for="name">Nome:</label>
-        <input type="text" v-model="name" id="name" class="contact__form-name"  />
+        <input type="text" v-model="name" id="name" class="contact__form-name" />
       </div>
       <div>
         <label for="msg">Mensagem:</label>
         <textarea v-model="message" id="msg" class="contact__form-msg"></textarea>
       </div>
       <div class="form__contact-wrapper-button">
-        <button type="submit" id="btn" class="contact__form-btn" v-bind:disabled="isDisabled" @click="handleSubmit">Enviar sua
-          mensagem</button>
+
+
+        <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" v-bind:disabled="isDisabled"
+          @click="handleSubmit">
+          Enviar sua
+          mensagem
+        </button>
+
+
       </div>
     </form>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+      aria-labelledby="staticBackdropLabel" aria-hidden="true">
+
+      <!-- message sucess -->
+      <div class="modal-dialog" v-if="isSucess">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">status</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body" v-if="msgAlert === 'aguarde um segundo...'">
+            {{ msgAlert }}
+          </div>
+          <div class="modal-body" v-else>
+            {{ msgAlert }}
+            <CircleCheckIcon style="color:green" size="20" />
+          </div>
+
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+              @click="handleClearMsgAlert">Close</button>
+
+          </div>
+        </div>
+      </div>
+      <!-- message failed -->
+
+      <div class="modal-dialog" v-else>
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">status</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body" v-if="msgAlert === 'aguarde um segundo...'">
+            {{ msgAlert }}
+          </div>
+          <div class="modal-body" v-else>
+            {{ msgAlert }}
+            <AlertCircleIcon style="color:red" size="20" />
+          </div>
+
+
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+              @click="handleClearMsgAlert">Close</button>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+
+
 
     <div class="foot" v-show="year">&copy; {{ year }} marco damasceno</div>
   </footer>
@@ -59,6 +126,8 @@ import {
   PhoneCallIcon,
   BrandGmailIcon,
   BoxIcon,
+  CircleCheckIcon,
+  AlertCircleIcon
 } from "vue-tabler-icons";
 
 
@@ -72,12 +141,14 @@ export default {
       year: "",
       name: "",
       message: "",
-      url:"https://app232backend.herokuapp.com/"
+      url: "https://app232backend.herokuapp.com/",
+      isSucess: false,
+      msgAlert: "aguarde um segundo..."
     }
   },
   watch: {
     name: "handleDisabledButton",
-    message: "handleDisabledButton"
+    message: "handleDisabledButton",
   },
   methods: {
     handleGetFullYear: function () {
@@ -85,45 +156,60 @@ export default {
     },
     handleDisabledButton: function () {
       if (!this.name || !this.message) {
-        this.isDisabled = true    
+        this.isDisabled = true
       } else {
         this.isDisabled = false
         this.isValid = true
       }
-   },
+    },
     handleValidatedFields: function () {
-      
-    if(this.name.length < 5){
-      this.name = "";
-      return
+
+      if (this.name.length <= 5) {
+        this.name = "";
+        return
+      }
+
+      if (this.message.length <= 5) {
+        this.message = ""
+        return
+      }
+    },
+
+    handleSubmit: async function (e) {
+      e.preventDefault();
+      this.handleValidatedFields();
+
+      const data = {
+        name: this.name,
+        message: this.message
+      }
+      await ajax.open("POST", this.url, true)
+
+      ajax.setRequestHeader("content-type", "application/json")
+
+      ajax.send(JSON.stringify(data))
+
+      setTimeout(() => {
+        ajax.onload = () => {
+
+          if (ajax.status == 200) {
+            this.isSucess = true
+            this.msgAlert = "mensagem enviada com sucesso!"
+          } else {
+            this.isSucess = false
+            this.msgAlert = "mensagem não enviada!"
+          }
+        }
+      }, 500)
+
+      setTimeout(() => {
+        this.name = ""
+        this.message = ""
+      }, 7000)
+    },
+    handleClearMsgAlert: function () {
+      this.msgAlert = "aguarde um segundo..."
     }
-
-   if(this.message.length < 5){
-      this.message = ""
-      return
-    }
-   },
-   handleSubmit: async function(e){
-    e.preventDefault();
-    this.handleValidatedFields();
-
-    const data = {
-      name: this.name,
-      message: this.message
-    }
-    await ajax.open("POST",this.url,true)
-
-    ajax.setRequestHeader("content-type","application/json")
-
-    ajax.send(JSON.stringify(data))
-
-    ajax.onload = () =>  ajax.status == 200 ? alert("mensagem enviada com sucesso !") : alert("sem sucesso. a algo de errado aqui!")
-
-    setTimeout(() => {
-      this.name = ""
-      this.message = ""
-    },6000)
-   },
 
   },
   mounted: function () {
@@ -135,6 +221,9 @@ export default {
     PhoneCallIcon,
     BrandGmailIcon,
     BoxIcon,
+    CircleCheckIcon,
+    AlertCircleIcon
+
   },
 };
 </script>
@@ -228,7 +317,7 @@ export default {
 .email .icon__email:hover,
 .github .icon__github:hover,
 .linkedin .icon__linkedin:hover {
-    color: var(--white);
+  color: var(--white);
   transition: .4s ease;
 }
 
@@ -257,7 +346,7 @@ a {
   height: 100%;
   min-height: 100px;
   grid-area: footer;
-  margin-top:var(--medium);
+  margin-top: var(--medium);
 }
 
 .footer__portfolio .foot::after {
@@ -311,14 +400,14 @@ input {
 .contact__form div textarea {
   height: 100%;
   min-height: 200px;
-  resize:none;
-  outline:none;
-  border-color:var(--medium-brown-gray);
-  border:1px solid;
- padding:var(--tiny);
- font-size:var(--small);
- font-weight:600;
- font-style:italic;
+  resize: none;
+  outline: none;
+  border-color: var(--medium-brown-gray);
+  border: 1px solid;
+  padding: var(--tiny);
+  font-size: var(--small);
+  font-weight: 600;
+  font-style: italic;
 }
 
 .contact__form button {
@@ -371,8 +460,8 @@ input {
     justify-content: center;
   }
 
-  .contact__form{
-    max-width:330px;
+  .contact__form {
+    max-width: 330px;
   }
 }
 </style>
