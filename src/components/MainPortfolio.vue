@@ -980,6 +980,7 @@ export default {
   height: 100%;
   min-height: 800px;
   width: 100%;
+  background-color: var(--black);
 }
 
 .main__portfolio-laboratory .laboratory {
@@ -997,7 +998,7 @@ export default {
 }
 
 .main__portfolio-laboratory .laboratory {
-  color: var(--black);
+  color: var(--white);
   font-size: var(--large);
 }
 

@@ -1,13 +1,10 @@
 <template>
     <swiper :slidesPerView="3" :spaceBetween="10" :slidesPerGroup="1" :loop="true" :loopFillGroupWithBlank="true"
-        :pagination="{
-            clickable: true,
-        }" :breakpoints="swiperOptions.breakpoints" :navigation="true" :modules="modules" class="mySwiper">
+        :breakpoints="swiperOptions.breakpoints" :navigation="true" :modules="modules" class="mySwiper">
         <swiper-slide v-for="repo in repositories" :key="repo.id">
 
             <Card v-bind:name="repo.name" v-bind:url="repo.html_url"
-                v-bind:description="repo.description ? repo.description : 'this repository has no description at the moment'"
-                 />
+                v-bind:description="repo.description ? repo.description : 'this repository has no description at the moment'" />
 
         </swiper-slide>
 
@@ -102,7 +99,7 @@ export default {
     margin-top: 100px;
     flex: 1;
     display: flex;
-    background-color: var(--faded-white);
+    background-color: var(--black);
     align-items: center;
     justify-content: space-around;
     margin-bottom: 10px;
@@ -112,7 +109,7 @@ export default {
     align-items: center;
     justify-content: center;
     font-size: 18px;
-    background-color: var(--faded-white);
+    background-color: var(--black);
     height: 100%;
     width: 100%;
     display: flex;

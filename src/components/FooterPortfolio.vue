@@ -67,10 +67,12 @@
             <h5 class="modal-title" id="staticBackdropLabel">status</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="modal-body" v-if="msgAlert === 'aguarde um segundo...'">
-            {{ msgAlert }}
+          <div class="modal-body" v-if="!msgAlert">
+
+            aguarde...
           </div>
           <div class="modal-body" v-else>
+
             {{ msgAlert }}
             <CircleCheckIcon style="color:green" size="20" />
           </div>
@@ -91,8 +93,8 @@
             <h5 class="modal-title" id="staticBackdropLabel">status</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="modal-body" v-if="msgAlert === 'aguarde um segundo...'">
-            {{ msgAlert }}
+          <div class="modal-body" v-if="!msgAlert">
+            aguarde...
           </div>
           <div class="modal-body" v-else>
             {{ msgAlert }}
@@ -143,7 +145,7 @@ export default {
       message: "",
       url: "https://app232backend.herokuapp.com/",
       isSucess: false,
-      msgAlert: "aguarde um segundo..."
+      msgAlert: ""
     }
   },
   watch: {
@@ -205,10 +207,10 @@ export default {
       setTimeout(() => {
         this.name = ""
         this.message = ""
-      }, 7000)
+      }, 5000)
     },
     handleClearMsgAlert: function () {
-      this.msgAlert = "aguarde um segundo..."
+      this.msgAlert = ""
     }
 
   },
@@ -258,7 +260,7 @@ export default {
 .footer__portfolio .pharse {
   text-align: center;
   word-wrap: break-word;
-  padding: var(--medium) 0;
+  padding: var(--medium) var(--tiny);
   color: var(--medium-brown-gray);
   width: 100%;
   display: flex;
@@ -294,6 +296,11 @@ export default {
   width: 80%;
   justify-content: start;
 }
+.footer__portfolio .network  .tel  p, .email  p{
+  height:100%;
+  padding:10px 0 0 0 ;
+}
+
 
 .footer__portfolio .network .github .github__url:hover,
 .linkedin .linkedin__url:hover {
